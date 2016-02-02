@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface ZXWRetriveData : NSObject
-@property (strong, nonatomic) NSArray *resultArray;
+@property (strong, nonatomic) NSMutableArray *resultArray;
+@property (nonatomic) int pageNumber;
+@property (strong, nonatomic) NSString *searchKeyword;
+
+
+- (void)start;
+//- (instancetype)initWithSearchKeyWord:(NSString *)searchKeyWord andPageNumber:(int)pageNumber;
 @end

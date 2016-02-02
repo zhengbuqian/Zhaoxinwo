@@ -10,6 +10,9 @@
 
 @interface ZXWInfoTableViewController : UITableViewController <UITableViewDelegate>
 
-@property (strong, nonatomic) NSString *titleForVC;
+@property (strong, nonatomic) NSString *searchKeyWord;
 @property (nonatomic) int pageNumber;
+
+- (instancetype)initWithSearchKeyword:(NSString *)searchKeyWord;
+- (void)startRetriveData;
 @end

@@ -73,5 +73,73 @@
     _cellString = [cellString copy];
     self.cellLabel.text = _cellString;
 }
+- (void)setCellData:(NSDictionary *)cellData {
+    _cellData = [cellData copy];
+    NSDictionary *authorInfoDic = _cellData[@"author"];
+    self.authorNameString = authorInfoDic[@"name"];
+    self.authorPubTimeString = authorInfoDic[@"pub_time"];
+    self.titleString = _cellData[@"title"];
+    self.mainContentString = _cellData[@"text"];
+    
+    // 重复发帖
+    NSArray *simMessages = _cellData[@"sim"];
+    NSUInteger simMessageCount = [simMessages count];
+    if (simMessageCount > 0) {
+        self.similarMessageString = [NSString stringWithFormat:@"重复发帖%lu次", (unsigned long)simMessageCount];
+    } else {
+        self.similarMessageString = @"";
+    }
+    
+    // 地铁
+    NSArray *metroArray = _cellData[@"ditie"];
+    NSMutableString *metroLabelString = [NSMutableString stringWithCapacity:80];
+    if (metroArray) {
+        for(NSString *metro in metroArray) {
+            [metroLabelString appendString:metro];
+            [metroLabelString appendString:@" "];
+        }
+        self.metroString = metroLabelString;
+    } else {
+        self.metroString = @"";
+    }
+    
+    // 地址
+    NSArray *adressArray = _cellData[@"dizhi"];
+    NSMutableString *adressLabelString = [NSMutableString stringWithCapacity:200];
+    if (adressArray) {
+        for (NSString *adress in adressArray) {
+            [adressLabelString appendString:adress];
+            [adressLabelString appendString:@" "];
+        }
+        self.adressString = adressLabelString;
+    } else {
+        self.adressString = @"";
+    }
+    
+    // 居室
+    NSString *jushiLabelString = _cellData[@"jushi"];
+    if (jushiLabelString) {
+        self.jushiString = jushiLabelString;
+    } else {
+        self.jushiString = @"";
+    }
+    
+    // 价格
+    NSString *priceLabelString = _cellData[@"zujin"];
+    if (priceLabelString) {
+        self.priceString = priceLabelString;
+    } else {
+        self.priceString = @"";
+    }
+    
+    // 手机
+    NSString *cellLabelString = _cellData[@"shouji"];
+    if (cellLabelString) {
+        self.cellString = cellLabelString;
+    } else {
+        self.cellString = @"";
+    }
+    
+}
 
 @end

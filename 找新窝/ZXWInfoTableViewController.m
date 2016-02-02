@@ -8,26 +8,30 @@
 
 #import "ZXWInfoTableViewController.h"
 #import "ZXWInfoCell.h"
+#import "ZXWRetriveData.h"
+
 static NSString *InfoCellReuseIdentifier = @"InfoCell";
 static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 @interface ZXWInfoTableViewController ()
 @property (strong, nonatomic) UITableViewHeaderFooterView *footerView;
+@property (strong, nonatomic) UILabel *footerViewLabel;
+
+@property (strong, nonatomic) ZXWRetriveData *data;
+@property (nonatomic, getter=isLoading) BOOL loading;
+
+
 @end
 
 @implementation ZXWInfoTableViewController
 
-- (instancetype)init {
+- (instancetype)initWithSearchKeyword:(NSString *)searchKeyWord {
     self = [super init];
     
     if (self) {
+        self.data = [[ZXWRetriveData alloc] init];
         self.pageNumber = 1;
-        
-        
-        
-        
-        
-        
+        self.searchKeyWord = searchKeyWord;
     }
     return self;
 }
@@ -41,10 +45,10 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     self.footerView = [[UITableViewHeaderFooterView alloc]
                        initWithReuseIdentifier:FooterViewIdentifier];
     CGRect footerViewLabelRect = CGRectMake(84, 10, 150, 15);
-    UILabel *footerViewLabel = [[UILabel alloc] initWithFrame:footerViewLabelRect];
-    footerViewLabel.text = @"上拉加载更多";
-    footerViewLabel.textAlignment = NSTextAlignmentCenter;
-    [self.footerView.contentView addSubview:footerViewLabel];
+    self.footerViewLabel = [[UILabel alloc] initWithFrame:footerViewLabelRect];
+    self.footerViewLabel.text = @"上拉加载更多";
+    self.footerViewLabel.textAlignment = NSTextAlignmentCenter;
+    [self.footerView.contentView addSubview:self.footerViewLabel];
     self.tableView.tableFooterView = self.footerView;
     
     UINib *nib = [UINib nibWithNibName:@"ZXWInfoCell" bundle:nil];
@@ -64,35 +68,58 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return 5;
+    
+    int number =[self.data.resultArray count];
+    NSLog(@"numberOfRowsInSection: %d", number);
+    return number;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZXWInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:InfoCellReuseIdentifier
                                                             forIndexPath:indexPath];
+    NSLog(@"cellForRowAtIndexPath");
     if (!cell) {
         cell = [[ZXWInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:InfoCellReuseIdentifier];
-        
-        
-        
-        
-        
-        
+        cell.cellData = self.data.resultArray[indexPath.row - 1];       // row starts at 1
     }
-    //cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    // Configure the cell...
-    
     return cell;
 }
 
+/*
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if ( scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height > 80
+        && !self.isLoading) {       // && !isLoading
+        self.loading = YES;
+        self.footerViewLabel.text = @"加载中...";
+        [self startRetriveData];
+        //[self.tableView reloadData];
+    }
+}
+*/
+- (void)setPageNumber:(int)pageNumber {
+    _pageNumber = pageNumber;
+    self.data.pageNumber = _pageNumber;
+}
+- (void)setSearchKeyWord:(NSString *)searchKeyWord {
+    _searchKeyWord = [searchKeyWord copy];
+    self.data.searchKeyword = _searchKeyWord;
+}
+
+
+
+- (void)startRetriveData {
+    NSLog(@"startRetriveData1");
+    [self.data start];
+    [self.data performSelectorInBackground:@selector(start)
+                                withObject:nil];
+    NSLog(@"startRetriveData2");
+    [self.tableView reloadData];
+    NSLog(@"startRetriveData3");
+}
 
 /*
 // Override to support conditional editing of the table view.

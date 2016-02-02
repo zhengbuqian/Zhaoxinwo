@@ -43,8 +43,11 @@
                            animated:YES
                          completion:nil];
     } else {
-        ZXWInfoTableViewController *infoVC = [[ZXWInfoTableViewController alloc] init];
+        ZXWInfoTableViewController *infoVC = [[ZXWInfoTableViewController alloc]
+                                              initWithSearchKeyword:self.inputTextField.text];
         infoVC.title = [NSString stringWithFormat:@"搜索结果: %@", self.inputTextField.text];
+        //infoVC.searchKeyWord = self.inputTextField.text;
+        [infoVC startRetriveData];
         [self.navigationController pushViewController:infoVC
                                              animated:YES];
     }
