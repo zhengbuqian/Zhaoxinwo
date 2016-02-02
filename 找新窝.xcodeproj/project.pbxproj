@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		1EAAB0531C607B77007F7E07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0521C607B77007F7E07 /* main.m */; };
 		1EAAB0561C607B77007F7E07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0551C607B77007F7E07 /* AppDelegate.m */; };
-		1EAAB0591C607B77007F7E07 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0581C607B77007F7E07 /* ViewController.m */; };
 		1EAAB05C1C607B77007F7E07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB05A1C607B77007F7E07 /* Main.storyboard */; };
 		1EAAB05E1C607B77007F7E07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB05D1C607B77007F7E07 /* Assets.xcassets */; };
 		1EAAB0611C607B77007F7E07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB05F1C607B77007F7E07 /* LaunchScreen.storyboard */; };
+		1EAAB06F1C60822B007F7E07 /* ZXWInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB06E1C60822B007F7E07 /* ZXWInfoTableViewController.m */; };
+		1EAAB0741C608C09007F7E07 /* ZXWHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0721C608C09007F7E07 /* ZXWHomeViewController.m */; };
+		1EAAB0751C608C09007F7E07 /* ZXWHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB0731C608C09007F7E07 /* ZXWHomeViewController.xib */; };
+		1EAAB07A1C60967F007F7E07 /* ZXWInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0781C60967F007F7E07 /* ZXWInfoCell.m */; };
+		1EAAB07B1C60967F007F7E07 /* ZXWInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB0791C60967F007F7E07 /* ZXWInfoCell.xib */; };
+		1EAAB07E1C60A654007F7E07 /* ZXWRetriveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB07D1C60A654007F7E07 /* ZXWRetriveData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +25,20 @@
 		1EAAB0521C607B77007F7E07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1EAAB0541C607B77007F7E07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1EAAB0551C607B77007F7E07 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1EAAB0571C607B77007F7E07 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1EAAB0581C607B77007F7E07 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1EAAB05B1C607B77007F7E07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1EAAB05D1C607B77007F7E07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EAAB0601C607B77007F7E07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EAAB0621C607B77007F7E07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EAAB06D1C60822B007F7E07 /* ZXWInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXWInfoTableViewController.h; sourceTree = "<group>"; };
+		1EAAB06E1C60822B007F7E07 /* ZXWInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXWInfoTableViewController.m; sourceTree = "<group>"; };
+		1EAAB0711C608C09007F7E07 /* ZXWHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXWHomeViewController.h; sourceTree = "<group>"; };
+		1EAAB0721C608C09007F7E07 /* ZXWHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXWHomeViewController.m; sourceTree = "<group>"; };
+		1EAAB0731C608C09007F7E07 /* ZXWHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXWHomeViewController.xib; sourceTree = "<group>"; };
+		1EAAB0771C60967F007F7E07 /* ZXWInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXWInfoCell.h; sourceTree = "<group>"; };
+		1EAAB0781C60967F007F7E07 /* ZXWInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXWInfoCell.m; sourceTree = "<group>"; };
+		1EAAB0791C60967F007F7E07 /* ZXWInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXWInfoCell.xib; sourceTree = "<group>"; };
+		1EAAB07C1C60A654007F7E07 /* ZXWRetriveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXWRetriveData.h; sourceTree = "<group>"; };
+		1EAAB07D1C60A654007F7E07 /* ZXWRetriveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXWRetriveData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +73,10 @@
 			children = (
 				1EAAB0541C607B77007F7E07 /* AppDelegate.h */,
 				1EAAB0551C607B77007F7E07 /* AppDelegate.m */,
-				1EAAB0571C607B77007F7E07 /* ViewController.h */,
-				1EAAB0581C607B77007F7E07 /* ViewController.m */,
 				1EAAB05A1C607B77007F7E07 /* Main.storyboard */,
 				1EAAB05D1C607B77007F7E07 /* Assets.xcassets */,
+				1EAAB0701C608237007F7E07 /* View */,
+				1EAAB0761C609273007F7E07 /* Model */,
 				1EAAB05F1C607B77007F7E07 /* LaunchScreen.storyboard */,
 				1EAAB0621C607B77007F7E07 /* Info.plist */,
 				1EAAB0511C607B77007F7E07 /* Supporting Files */,
@@ -77,6 +90,30 @@
 				1EAAB0521C607B77007F7E07 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1EAAB0701C608237007F7E07 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EAAB0711C608C09007F7E07 /* ZXWHomeViewController.h */,
+				1EAAB0721C608C09007F7E07 /* ZXWHomeViewController.m */,
+				1EAAB0731C608C09007F7E07 /* ZXWHomeViewController.xib */,
+				1EAAB06D1C60822B007F7E07 /* ZXWInfoTableViewController.h */,
+				1EAAB06E1C60822B007F7E07 /* ZXWInfoTableViewController.m */,
+				1EAAB0771C60967F007F7E07 /* ZXWInfoCell.h */,
+				1EAAB0781C60967F007F7E07 /* ZXWInfoCell.m */,
+				1EAAB0791C60967F007F7E07 /* ZXWInfoCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1EAAB0761C609273007F7E07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1EAAB07C1C60A654007F7E07 /* ZXWRetriveData.h */,
+				1EAAB07D1C60A654007F7E07 /* ZXWRetriveData.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +177,8 @@
 				1EAAB0611C607B77007F7E07 /* LaunchScreen.storyboard in Resources */,
 				1EAAB05E1C607B77007F7E07 /* Assets.xcassets in Resources */,
 				1EAAB05C1C607B77007F7E07 /* Main.storyboard in Resources */,
+				1EAAB07B1C60967F007F7E07 /* ZXWInfoCell.xib in Resources */,
+				1EAAB0751C608C09007F7E07 /* ZXWHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,9 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EAAB0591C607B77007F7E07 /* ViewController.m in Sources */,
 				1EAAB0561C607B77007F7E07 /* AppDelegate.m in Sources */,
 				1EAAB0531C607B77007F7E07 /* main.m in Sources */,
+				1EAAB07A1C60967F007F7E07 /* ZXWInfoCell.m in Sources */,
+				1EAAB06F1C60822B007F7E07 /* ZXWInfoTableViewController.m in Sources */,
+				1EAAB07E1C60A654007F7E07 /* ZXWRetriveData.m in Sources */,
+				1EAAB0741C608C09007F7E07 /* ZXWHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +308,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "找新窝/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zhengbuqian.---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengbuqian.ZXW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -277,7 +319,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "找新窝/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zhengbuqian.---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengbuqian.ZXW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -301,6 +343,7 @@
 				1EAAB0671C607B77007F7E07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

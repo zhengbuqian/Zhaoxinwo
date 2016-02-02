@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ZXWHomeViewController.h
 //  找新窝
 //
 //  Created by 卜千 郑 on 16/2/2.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ZXWHomeViewController : UIViewController
 
 @end
-
