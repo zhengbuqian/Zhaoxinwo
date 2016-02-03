@@ -93,20 +93,30 @@
     // 地铁
     NSArray *metroArray = _cellData[@"ditie"];
     NSMutableString *metroLabelString = [NSMutableString stringWithCapacity:80];
-    if (metroArray) {
+    for(NSString *metro in metroArray) {
+        [metroLabelString appendString:metro];
+        [metroLabelString appendString:@" "];
+    }
+    self.metroString = metroLabelString;
+    /*if (metroArray) {
         for(NSString *metro in metroArray) {
             [metroLabelString appendString:metro];
             [metroLabelString appendString:@" "];
         }
         self.metroString = metroLabelString;
     } else {
-        self.metroString = @"";
-    }
+       self.metroString = @"";
+    }*/
     
     // 地址
     NSArray *adressArray = _cellData[@"dizhi"];
     NSMutableString *adressLabelString = [NSMutableString stringWithCapacity:200];
-    if (adressArray) {
+    for (NSString *adress in adressArray) {
+        [adressLabelString appendString:adress];
+        [adressLabelString appendString:@" "];
+    }
+    self.adressString = adressLabelString;
+    /*if (adressArray) {
         for (NSString *adress in adressArray) {
             [adressLabelString appendString:adress];
             [adressLabelString appendString:@" "];
@@ -114,31 +124,35 @@
         self.adressString = adressLabelString;
     } else {
         self.adressString = @"";
-    }
+    }*/
     
     // 居室
     NSString *jushiLabelString = _cellData[@"jushi"];
-    if (jushiLabelString) {
+    self.jushiString = jushiLabelString;
+    /*if (jushiLabelString) {
         self.jushiString = jushiLabelString;
     } else {
         self.jushiString = @"";
-    }
+    }*/
     
     // 价格
     NSString *priceLabelString = _cellData[@"zujin"];
-    if (priceLabelString) {
+    self.priceString = priceLabelString;
+    /*if (priceLabelString) {
+        //priceLabelString = [priceLabelString stringByAppendingString:@"/月"];
         self.priceString = priceLabelString;
     } else {
         self.priceString = @"";
-    }
+    }*/
     
     // 手机
     NSString *cellLabelString = _cellData[@"shouji"];
-    if (cellLabelString) {
+    self.cellString = cellLabelString;
+    /*if (cellLabelString) {
         self.cellString = cellLabelString;
     } else {
         self.cellString = @"";
-    }
+    }*/
     
 }
 

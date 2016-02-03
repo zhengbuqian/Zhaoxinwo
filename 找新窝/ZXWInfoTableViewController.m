@@ -83,7 +83,11 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     if (!cell) {
         cell = [[ZXWInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:InfoCellReuseIdentifier];
-        cell.cellData = self.data.resultArray[indexPath.row - 1];       // row starts at 1
+              // row starts at 0
+    }
+    if ([self.data.resultArray count] > 0) {
+        NSLog(@"here %d", indexPath.row);
+        cell.cellData = self.data.resultArray[indexPath.row];
     }
     return cell;
 }
@@ -113,11 +117,18 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 - (void)startRetriveData {
     NSLog(@"startRetriveData1");
-    [self.data start];
-    [self.data performSelectorInBackground:@selector(start)
-                                withObject:nil];
+    void (^blk)() = ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    };
+    
+    [self.data startWithBlock:blk];
+//    [self.data performSelectorInBackground:@selector(start)
+//                                withObject:nil];
     NSLog(@"startRetriveData2");
-    [self.tableView reloadData];
+    //dispatch_async(dispatch_get_main_queue(), ^{[self.tableView reloadData];});
+    
     NSLog(@"startRetriveData3");
 }
 

@@ -28,7 +28,7 @@
     }
     return self;
 }
-- (void)start {
+- (void)startWithBlock:(void (^)())block {
     NSString *urlString = [NSString stringWithFormat:@"http://182.92.159.73/apis/search/%@/%d/", self.searchKeyword, self.pageNumber];
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:set];
@@ -47,6 +47,7 @@
              [self.resultArray addObject:objCopy];
          }
          NSLog(@"start inside");
+         block();
          /*dispatch_async(dispatch_get_main_queue(),^{
              
              [self.tableView reloadData];
