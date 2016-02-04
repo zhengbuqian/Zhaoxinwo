@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *authorPubTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *similarMessageLabel;
+//@property (weak, nonatomic) IBOutlet UIButton *mainContentButton;
 @property (weak, nonatomic) IBOutlet UILabel *mainContentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *metroLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
@@ -25,7 +26,10 @@
 @implementation ZXWInfoCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    /*self.mainContentButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.mainContentButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.mainContentButton.titleLabel.numberOfLines = 4;*/
+    //self.mainContentButton.lin
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -51,6 +55,9 @@
 }
 - (void)setMainContentString:(NSString *)mainContentString {
     _mainContentString = [mainContentString copy];
+    /*[self.mainContentButton setTitle:_mainContentString
+                            forState:UIControlStateNormal];
+    [self.mainContentButton layoutIfNeeded];*/
     self.mainContentLabel.text = _mainContentString;
 }
 - (void)setMetroString:(NSString *)metroString {
@@ -155,5 +162,14 @@
     }*/
     
 }
-
+/*
+- (IBAction)buttonPressed:(UIButton *)sender {
+    (sender.titleLabel.numberOfLines == 4)        ?
+            (sender.titleLabel.numberOfLines = 0) :
+            (sender.titleLabel.numberOfLines = 4) ;
+    CGSize mainContentButtonTitileLableSize = self.mainContentButton.titleLabel.frame.size;
+    [self.mainContentButton setFrame:CGRectMake(15, 84, mainContentButtonTitileLableSize.width, mainContentButtonTitileLableSize.height)];
+    [self.mainContentButton layoutIfNeeded];
+}
+*/
 @end

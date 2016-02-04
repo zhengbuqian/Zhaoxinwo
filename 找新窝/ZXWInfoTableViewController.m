@@ -92,6 +92,11 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     return cell;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView
+willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 /*
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
