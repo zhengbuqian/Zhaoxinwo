@@ -32,7 +32,7 @@
     NSString *urlString = [NSString stringWithFormat:@"http://182.92.159.73/apis/search/%@/%d/", self.searchKeyword, self.pageNumber];
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:set];
-    NSLog(@"start outside");
+    //NSLog(@"start outside");
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSURLSessionDataTask *dataTask =
@@ -46,7 +46,7 @@
              id objCopy = [obj copy];
              [self.resultArray addObject:objCopy];
          }
-         NSLog(@"start inside");
+         NSLog(@"pageNumber: %d", self.pageNumber);
          block();
          /*dispatch_async(dispatch_get_main_queue(),^{
              

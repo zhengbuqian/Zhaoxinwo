@@ -9,6 +9,7 @@
 #import "ZXWInfoTableViewController.h"
 #import "ZXWInfoCell.h"
 #import "ZXWRetriveData.h"
+#import "MJRefresh.h"
 
 static NSString *InfoCellReuseIdentifier = @"InfoCell";
 static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
@@ -20,6 +21,7 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 @property (strong, nonatomic) ZXWRetriveData *data;
 @property (nonatomic, getter=isLoading) BOOL loading;
 
+@property (strong) MJRefreshAutoNormalFooter *mjFooterView;
 
 @end
 
@@ -41,7 +43,7 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     
     self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
+    /*
     self.footerView = [[UITableViewHeaderFooterView alloc]
                        initWithReuseIdentifier:FooterViewIdentifier];
     CGRect footerViewLabelRect = CGRectMake(84, 10, 150, 15);
@@ -50,6 +52,12 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     self.footerViewLabel.textAlignment = NSTextAlignmentCenter;
     [self.footerView.contentView addSubview:self.footerViewLabel];
     self.tableView.tableFooterView = self.footerView;
+    */
+    
+    //self.mjFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
+      //                                                       refreshingAction:@selector(startRetriveData)];
+    self.mjFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{[self startRetriveData];}];
+    self.tableView.tableFooterView = self.mjFooterView;
     
     UINib *nib = [UINib nibWithNibName:@"ZXWInfoCell" bundle:nil];
     [self.tableView registerNib:nib
@@ -70,8 +78,8 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    int number =[self.data.resultArray count];
-    NSLog(@"numberOfRowsInSection: %d", number);
+    unsigned long number = [self.data.resultArray count];
+    //NSLog(@"numberOfRowsInSection: %d", number);
     return number;
 }
 
@@ -79,14 +87,14 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZXWInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:InfoCellReuseIdentifier
                                                             forIndexPath:indexPath];
-    NSLog(@"cellForRowAtIndexPath");
+    //NSLog(@"cellForRowAtIndexPath");
     if (!cell) {
         cell = [[ZXWInfoCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:InfoCellReuseIdentifier];
               // row starts at 0
     }
     if ([self.data.resultArray count] > 0) {
-        NSLog(@"here %d", indexPath.row);
+        //NSLog(@"here %d", indexPath.row);
         cell.cellData = self.data.resultArray[indexPath.row];
     }
     return cell;
@@ -121,7 +129,9 @@ willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (void)startRetriveData {
-    NSLog(@"startRetriveData1");
+    int count = 0;
+    NSLog(@"startRetriveData %d", count);
+    count++;
     void (^blk)() = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
@@ -131,10 +141,10 @@ willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.data startWithBlock:blk];
 //    [self.data performSelectorInBackground:@selector(start)
 //                                withObject:nil];
-    NSLog(@"startRetriveData2");
+    //NSLog(@"startRetriveData2");
     //dispatch_async(dispatch_get_main_queue(), ^{[self.tableView reloadData];});
     
-    NSLog(@"startRetriveData3");
+    //NSLog(@"startRetriveData3");
 }
 
 /*
