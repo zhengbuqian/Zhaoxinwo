@@ -7,11 +7,12 @@
 //
 
 #import "ZXWInfoCell.h"
+#import "UITitleLabel.h"
 
 @interface ZXWInfoCell ()
 @property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorPubTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITitleLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *similarMessageLabel;
 //@property (weak, nonatomic) IBOutlet UIButton *mainContentButton;
 @property (weak, nonatomic) IBOutlet UILabel *mainContentLabel;
@@ -19,15 +20,28 @@
 @property (weak, nonatomic) IBOutlet UILabel *adressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jushiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *cellLabel;
+@property (weak, nonatomic) IBOutlet UICellLabel *cellLabel;
 //@property (weak) IBOutlet UIImage *userHeadPortrait;
 @property (strong, nonatomic) IBOutlet UIImageView *userHeadPortraitImageView;
-
+@property (weak, nonatomic) IBOutlet UIButton *cellButton;
 
 @end
 
 @implementation ZXWInfoCell
 
+/*
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        UITapGestureRecognizer *cellLabelTapGestureRecognizer =
+            [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                    action:@selector(cellLabelTapped:)];
+        cellLabelTapGestureRecognizer.numberOfTapsRequired = 1;
+        [self.cellLabel addGestureRecognizer:cellLabelTapGestureRecognizer];
+    }
+    return self;
+}
+ */
 - (void)awakeFromNib {
     /*self.mainContentButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.mainContentButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -47,6 +61,10 @@
 - (void)setAuthorPubTimeString:(NSString *)authorPubTimeString {
     _authorPubTimeString = [authorPubTimeString copy];
     self.authorPubTimeLabel.text = _authorPubTimeString;
+}
+- (void)setPostLinkString:(NSString *)postLinkString {
+    _postLinkString = [postLinkString copy];
+    self.titleLabel.postLink = _postLinkString;
 }
 - (void)setTitleString:(NSString *)titleString {
     _titleString = [titleString copy];
@@ -94,6 +112,7 @@
     self.authorPubTimeString = _cellData[@"pub_time"];
     self.titleString = _cellData[@"title"];
     self.mainContentString = _cellData[@"text"];
+    self.postLinkString = _cellData[@"url"];
     
     // 重复发帖
     NSArray *simMessages = _cellData[@"sim"];
@@ -162,6 +181,10 @@
     // 手机
     NSString *cellLabelString = _cellData[@"shouji"];
     self.cellString = cellLabelString;
+    if ([cellLabelString length] < 5) {
+        self.cellLabel.hidden = YES;
+        self.cellButton.hidden = YES;
+    }
     /*if (cellLabelString) {
         self.cellString = cellLabelString;
     } else {
@@ -182,4 +205,23 @@
     [self.mainContentButton layoutIfNeeded];
 }
 */
+
+/*
+- (void)cellLabelTapped:(UIGestureRecognizer *)gr {
+    NSLog(@"Recognized tap on cellLabel");
+    NSString *telString = @"tel://";
+    NSString *urlString = [telString stringByAppendingString:self.cellString];
+    NSLog(@"%@", urlString);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+}
+ */
+/*
+- (IBAction)cellNumberTapped:(id)sender {
+    NSString *telString = @"tel://";
+    NSString *urlString = [telString stringByAppendingString:self.cellString];
+    NSLog(@"%@", urlString);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+}
+ */
+
 @end

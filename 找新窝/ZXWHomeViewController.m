@@ -8,9 +8,12 @@
 
 #import "ZXWHomeViewController.h"
 #import "ZXWInfoTableViewController.h"
+#import "ZXWAboutViewController.h"
+
 @interface ZXWHomeViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UIButton *aboutButton;
 
 
 @end
@@ -74,5 +77,12 @@
     [[UIApplication sharedApplication]
      openURL:[NSURL URLWithString:@"http://zhaoxinwo.com"]];
 }
+- (IBAction)aboutButtonPressed:(UIButton *)sender {
+    ZXWAboutViewController *aboutVC = [[ZXWAboutViewController alloc] init];
+    aboutVC.title = @"关于";
+    [self.navigationController pushViewController:aboutVC
+                                         animated:YES];
+}
+
 
 @end

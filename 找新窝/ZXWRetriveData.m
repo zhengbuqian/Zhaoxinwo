@@ -54,15 +54,14 @@
                                                                           selector:@selector(downloadHeadPortraitWithBlock:)
                                                                             object:block];
          [operationQueue addOperation:op];
-         block();
-         
+         //block();
      }];
     [dataTask resume];
-    self.pageNumber++;
+    
 }
 
 - (void)downloadHeadPortraitWithBlock:(void (^)())block {
-    for (int i = (self.pageNumber - 2) * 5 ;i - (self.pageNumber - 2) * 5 < 5 ; i ++ ) {
+    for (int i = (self.pageNumber - 1) * 5 ;i - (self.pageNumber - 1) * 5 < 5 ; i ++ ) {
         NSDictionary *dictionary = [self.resultArray objectAtIndex:i];
         NSDictionary *authorDic = dictionary[@"author"];
         NSString *userHeadPortraitURLString = authorDic[@"avatar"];
@@ -70,8 +69,10 @@
         
         UIImage *headPortrait = [UIImage imageWithData:[NSData dataWithContentsOfURL:userHeadPortraitURL]];
         [self.userHeadPortraitArray addObject:headPortrait];
-        block();
+        //block();
     }
+    block();
+    self.pageNumber++;
 }
 
 @end

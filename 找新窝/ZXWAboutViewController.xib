@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXWAboutViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="A3s-Yr-VAU">
+                    <rect key="frame" x="270" y="120" width="60" height="60"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找新窝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHC-Mg-otv">
+                    <rect key="frame" x="258" y="211" width="84" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9g-wH-WLZ">
+                    <rect key="frame" x="8" y="279" width="57" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4C-iN-fpt">
+                    <rect key="frame" x="8" y="326" width="52" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAq-wb-AH4">
+                    <rect key="frame" x="556" y="279" width="36" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zhengbuqian@gmail.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9o-lN-0Ju" customClass="UIEmailLabel">
+                    <rect key="frame" x="399" y="326" width="193" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.090196078431372548" green="0.25490196078431371" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="M9g-wH-WLZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="3wz-hm-mjv"/>
+                <constraint firstAttribute="trailing" secondItem="QAq-wb-AH4" secondAttribute="trailing" constant="8" id="Ff4-Ox-4WZ"/>
+                <constraint firstItem="M9g-wH-WLZ" firstAttribute="top" secondItem="LHC-Mg-otv" secondAttribute="bottom" constant="34" id="H7z-GO-pcL"/>
+                <constraint firstItem="E9o-lN-0Ju" firstAttribute="top" secondItem="QAq-wb-AH4" secondAttribute="bottom" constant="26" id="KHP-FY-4ci"/>
+                <constraint firstItem="A3s-Yr-VAU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qdh-HW-aEB"/>
+                <constraint firstItem="R4C-iN-fpt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="XQO-bJ-mYX"/>
+                <constraint firstAttribute="trailing" secondItem="E9o-lN-0Ju" secondAttribute="trailing" constant="8" id="d1u-s0-e8s"/>
+                <constraint firstItem="QAq-wb-AH4" firstAttribute="top" secondItem="LHC-Mg-otv" secondAttribute="bottom" constant="34" id="m7r-LO-k7r"/>
+                <constraint firstItem="R4C-iN-fpt" firstAttribute="top" secondItem="M9g-wH-WLZ" secondAttribute="bottom" constant="26" id="nXW-pM-lQq"/>
+                <constraint firstItem="A3s-Yr-VAU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="qVA-sx-F2l"/>
+                <constraint firstItem="LHC-Mg-otv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x6U-c8-agf"/>
+                <constraint firstItem="LHC-Mg-otv" firstAttribute="top" secondItem="A3s-Yr-VAU" secondAttribute="bottom" constant="31" id="xCp-ue-57I"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="LaunchScreenLogo" width="60" height="60"/>
+    </resources>
+</document>

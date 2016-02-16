@@ -34,6 +34,7 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
         self.data = [[ZXWRetriveData alloc] init];
         self.pageNumber = 1;
         self.searchKeyWord = searchKeyWord;
+        self.loading = NO;
     }
     return self;
 }
@@ -43,7 +44,9 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     
     self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    /*
+    
+    // 自定义一个footerView来加载更多
+    
     self.footerView = [[UITableViewHeaderFooterView alloc]
                        initWithReuseIdentifier:FooterViewIdentifier];
     CGRect footerViewLabelRect = CGRectMake(84, 10, 150, 15);
@@ -52,21 +55,39 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     self.footerViewLabel.textAlignment = NSTextAlignmentCenter;
     [self.footerView.contentView addSubview:self.footerViewLabel];
     self.tableView.tableFooterView = self.footerView;
-    */
     
-    //self.mjFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
-      //                                                       refreshingAction:@selector(startRetriveData)];
+    
+    // 使用MJRefresh，但是有问题就是只能加载两次
+    /*
+    self.mjFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
+                                                             refreshingAction:@selector(startRetriveData)];
     self.mjFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{[self startRetriveData];}];
     self.tableView.tableFooterView = self.mjFooterView;
+     */
+    
+    // 使用UIRefreshControl，但是貌似只能做下拉刷新，不能做上拉加载更多
+    /*
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"上拉以加载更多"];
+    [refresh addTarget:self action:@selector(startRetriveData) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+     */
     
     UINib *nib = [UINib nibWithNibName:@"ZXWInfoCell" bundle:nil];
     [self.tableView registerNib:nib
          forCellReuseIdentifier:InfoCellReuseIdentifier];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"点击信息标题可以跳转至该条租房信息的豆瓣贴子里"
+                                                                       message:@"点击电话号码（如果有）可以进行拨号。长按电话号码可以复制。"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"好，知道了"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:nil];
+        [alert addAction:confirm];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,18 +129,23 @@ willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 
-/*
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if ( scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height > 80
-        && !self.isLoading) {       // && !isLoading
+    if ( scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height > 100
+        && !self.isLoading && [self.data.resultArray count] > 3) {       // && !isLoading
         self.loading = YES;
+        
         self.footerViewLabel.text = @"加载中...";
+        CGRect rectToShow = CGRectMake(self.tableView.tableFooterView.frame.origin.x,
+                                       self.tableView.tableFooterView.frame.origin.y,
+                                       self.tableView.tableFooterView.frame.size.width,
+                                       self.tableView.tableFooterView.frame.size.height + 50);
+        [self.tableView scrollRectToVisible:rectToShow animated:YES];
         [self startRetriveData];
-        //[self.tableView reloadData];
     }
 }
-*/
+
 - (void)setPageNumber:(int)pageNumber {
     _pageNumber = pageNumber;
     self.data.pageNumber = _pageNumber;
@@ -138,6 +164,16 @@ willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     void (^blk)() = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            
+            // 使用footerView加载更多
+            self.loading = NO;
+            self.footerViewLabel.text = @"上拉加载更多";
+            
+            
+            // 使用UIRefreshControl
+             /*
+            [self.refreshControl endRefreshing];
+             */
         });
     };
     

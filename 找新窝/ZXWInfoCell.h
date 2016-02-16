@@ -24,4 +24,7 @@
 
 @property (copy, nonatomic) UIImage *userHeadPortrait;
 
+@property (copy, nonatomic) NSString *postLinkString;
+
+
 @end

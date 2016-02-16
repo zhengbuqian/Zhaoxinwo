@@ -27,6 +27,11 @@
 		1E0A55921C63816C00611A95 /* MJRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0A558E1C63816C00611A95 /* MJRefreshNormalHeader.m */; };
 		1E0A55931C63816C00611A95 /* MJRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0A55901C63816C00611A95 /* MJRefreshStateHeader.m */; };
 		1E1AAFF41C70B4B700410126 /* ZXWHeadPortraitStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AAFF31C70B4B700410126 /* ZXWHeadPortraitStore.m */; };
+		1E1AAFF71C73066F00410126 /* UICellLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AAFF61C73066F00410126 /* UICellLabel.m */; };
+		1E1AAFFA1C730F4900410126 /* UITitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AAFF91C730F4900410126 /* UITitleLabel.m */; };
+		1E1AB00A1C73447900410126 /* ZXWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB0081C73447900410126 /* ZXWAboutViewController.m */; };
+		1E1AB00B1C73447900410126 /* ZXWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AB0091C73447900410126 /* ZXWAboutViewController.xib */; };
+		1E1AB00E1C7346B000410126 /* UIEmailLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB00D1C7346B000410126 /* UIEmailLabel.m */; };
 		1EAAB0531C607B77007F7E07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0521C607B77007F7E07 /* main.m */; };
 		1EAAB0561C607B77007F7E07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0551C607B77007F7E07 /* AppDelegate.m */; };
 		1EAAB05C1C607B77007F7E07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB05A1C607B77007F7E07 /* Main.storyboard */; };
@@ -81,6 +86,15 @@
 		1E0A55901C63816C00611A95 /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
 		1E1AAFF21C70B4B700410126 /* ZXWHeadPortraitStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXWHeadPortraitStore.h; sourceTree = "<group>"; };
 		1E1AAFF31C70B4B700410126 /* ZXWHeadPortraitStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXWHeadPortraitStore.m; sourceTree = "<group>"; };
+		1E1AAFF51C73066F00410126 /* UICellLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICellLabel.h; sourceTree = "<group>"; };
+		1E1AAFF61C73066F00410126 /* UICellLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICellLabel.m; sourceTree = "<group>"; };
+		1E1AAFF81C730F4900410126 /* UITitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITitleLabel.h; sourceTree = "<group>"; };
+		1E1AAFF91C730F4900410126 /* UITitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITitleLabel.m; sourceTree = "<group>"; };
+		1E1AB0071C73447900410126 /* ZXWAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXWAboutViewController.h; sourceTree = "<group>"; };
+		1E1AB0081C73447900410126 /* ZXWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXWAboutViewController.m; sourceTree = "<group>"; };
+		1E1AB0091C73447900410126 /* ZXWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXWAboutViewController.xib; sourceTree = "<group>"; };
+		1E1AB00C1C7346B000410126 /* UIEmailLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEmailLabel.h; sourceTree = "<group>"; };
+		1E1AB00D1C7346B000410126 /* UIEmailLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEmailLabel.m; sourceTree = "<group>"; };
 		1EAAB04E1C607B77007F7E07 /* 找新窝.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "找新窝.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAAB0521C607B77007F7E07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1EAAB0541C607B77007F7E07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -205,6 +219,19 @@
 			name = Back;
 			sourceTree = "<group>";
 		};
+		1E1AAFFB1C730F5000410126 /* CustomLabelForCell */ = {
+			isa = PBXGroup;
+			children = (
+				1E1AAFF51C73066F00410126 /* UICellLabel.h */,
+				1E1AAFF61C73066F00410126 /* UICellLabel.m */,
+				1E1AAFF81C730F4900410126 /* UITitleLabel.h */,
+				1E1AAFF91C730F4900410126 /* UITitleLabel.m */,
+				1E1AB00C1C7346B000410126 /* UIEmailLabel.h */,
+				1E1AB00D1C7346B000410126 /* UIEmailLabel.m */,
+			);
+			name = CustomLabelForCell;
+			sourceTree = "<group>";
+		};
 		1EAAB0451C607B77007F7E07 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +284,10 @@
 				1EAAB0771C60967F007F7E07 /* ZXWInfoCell.h */,
 				1EAAB0781C60967F007F7E07 /* ZXWInfoCell.m */,
 				1EAAB0791C60967F007F7E07 /* ZXWInfoCell.xib */,
+				1E1AAFFB1C730F5000410126 /* CustomLabelForCell */,
+				1E1AB0071C73447900410126 /* ZXWAboutViewController.h */,
+				1E1AB0081C73447900410126 /* ZXWAboutViewController.m */,
+				1E1AB0091C73447900410126 /* ZXWAboutViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -336,6 +367,7 @@
 				1EAAB05C1C607B77007F7E07 /* Main.storyboard in Resources */,
 				1EAAB07B1C60967F007F7E07 /* ZXWInfoCell.xib in Resources */,
 				1EAAB0751C608C09007F7E07 /* ZXWHomeViewController.xib in Resources */,
+				1E1AB00B1C73447900410126 /* ZXWAboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,15 +381,19 @@
 				1EAAB0561C607B77007F7E07 /* AppDelegate.m in Sources */,
 				1E0A55931C63816C00611A95 /* MJRefreshStateHeader.m in Sources */,
 				1E0A55891C63815D00611A95 /* MJRefreshAutoNormalFooter.m in Sources */,
+				1E1AAFF71C73066F00410126 /* UICellLabel.m in Sources */,
 				1E0A558A1C63815D00611A95 /* MJRefreshAutoStateFooter.m in Sources */,
 				1E0A555F1C6380B600611A95 /* UIView+MJExtension.m in Sources */,
 				1EAAB0531C607B77007F7E07 /* main.m in Sources */,
 				1EAAB07A1C60967F007F7E07 /* ZXWInfoCell.m in Sources */,
 				1E0A55881C63815D00611A95 /* MJRefreshAutoGifFooter.m in Sources */,
 				1E0A55921C63816C00611A95 /* MJRefreshNormalHeader.m in Sources */,
+				1E1AB00A1C73447900410126 /* ZXWAboutViewController.m in Sources */,
 				1E0A555C1C6380B600611A95 /* MJRefreshConst.m in Sources */,
+				1E1AB00E1C7346B000410126 /* UIEmailLabel.m in Sources */,
 				1E0A555D1C6380B600611A95 /* UIScrollView+MJExtension.m in Sources */,
 				1E0A55801C63812600611A95 /* MJRefreshBackNormalFooter.m in Sources */,
+				1E1AAFFA1C730F4900410126 /* UITitleLabel.m in Sources */,
 				1E0A55911C63816C00611A95 /* MJRefreshGifHeader.m in Sources */,
 				1E0A556F1C6380DD00611A95 /* MJRefreshBackFooter.m in Sources */,
 				1E0A55811C63812600611A95 /* MJRefreshBackStateFooter.m in Sources */,

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXWHomeViewController">
             <connections>
+                <outlet property="aboutButton" destination="DlJ-1h-ujt" id="VD7-1A-EGY"/>
                 <outlet property="inputTextField" destination="agu-lF-Tfm" id="adu-ld-rpY"/>
                 <outlet property="searchButton" destination="B0G-CD-e4a" id="UMA-E2-yCl"/>
                 <outlet property="view" destination="BhZ-Gh-0Ki" id="pUO-Sd-o0F"/>
@@ -20,41 +21,63 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="w2H-BA-h91">
                     <rect key="frame" x="270" y="88" width="60" height="60"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0G-CD-e4a">
-                    <rect key="frame" x="8" y="242" width="584" height="30"/>
-                    <state key="normal" title="搜索"/>
-                    <connections>
-                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="hvP-cG-1QR"/>
-                    </connections>
-                </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入找房地点，如中关村" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="agu-lF-Tfm">
-                    <rect key="frame" x="8" y="187" width="584" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="searchButtonPressed:" destination="-1" eventType="editingDidEndOnExit" id="Nnl-vF-a1I"/>
-                    </connections>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eq-u5-vw2">
-                    <rect key="frame" x="247" y="517" width="106" height="30"/>
+                    <rect key="frame" x="241" y="434" width="118" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="zhaoxinwo.com"/>
                     <connections>
                         <action selector="jumpToSite:" destination="-1" eventType="touchUpInside" id="G0g-o0-CiC"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前版本：1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bk2-5c-5IT">
+                    <rect key="frame" x="247" y="488" width="107" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlJ-1h-ujt">
+                    <rect key="frame" x="285" y="522" width="30" height="30"/>
+                    <state key="normal" title="关于"/>
+                    <connections>
+                        <action selector="aboutButtonPressed:" destination="-1" eventType="touchUpInside" id="34I-7c-zzP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0G-CD-e4a">
+                    <rect key="frame" x="8" y="286" width="584" height="36"/>
+                    <color key="backgroundColor" red="0.12156862745098039" green="0.37254901960784315" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="搜索">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="hvP-cG-1QR"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入北京找房地点，如中关村" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="agu-lF-Tfm">
+                    <rect key="frame" x="8" y="231" width="584" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="editingDidEndOnExit" id="Nnl-vF-a1I"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="w2H-BA-h91" firstAttribute="top" secondItem="BhZ-Gh-0Ki" secondAttribute="top" constant="88" id="3ws-gc-Lgf"/>
                 <constraint firstItem="agu-lF-Tfm" firstAttribute="leading" secondItem="BhZ-Gh-0Ki" secondAttribute="leading" constant="8" id="8lB-0f-Wso"/>
+                <constraint firstItem="bk2-5c-5IT" firstAttribute="top" secondItem="5eq-u5-vw2" secondAttribute="bottom" constant="21" id="Ayd-Ey-P1k"/>
                 <constraint firstItem="w2H-BA-h91" firstAttribute="centerX" secondItem="BhZ-Gh-0Ki" secondAttribute="centerX" id="BiF-te-Kbb"/>
-                <constraint firstItem="agu-lF-Tfm" firstAttribute="top" secondItem="w2H-BA-h91" secondAttribute="bottom" constant="39" id="K1z-QA-ln8"/>
+                <constraint firstAttribute="bottom" secondItem="DlJ-1h-ujt" secondAttribute="bottom" constant="48" id="KfZ-mh-7qP"/>
+                <constraint firstItem="DlJ-1h-ujt" firstAttribute="top" secondItem="bk2-5c-5IT" secondAttribute="bottom" constant="16" id="R5K-bE-cc7"/>
                 <constraint firstAttribute="trailing" secondItem="agu-lF-Tfm" secondAttribute="trailing" constant="8" id="ULH-sD-tzC"/>
+                <constraint firstItem="agu-lF-Tfm" firstAttribute="top" secondItem="w2H-BA-h91" secondAttribute="bottom" constant="83" id="VDj-hP-taf"/>
+                <constraint firstItem="DlJ-1h-ujt" firstAttribute="centerX" secondItem="BhZ-Gh-0Ki" secondAttribute="centerX" id="X33-pd-dVh"/>
                 <constraint firstItem="5eq-u5-vw2" firstAttribute="centerX" secondItem="BhZ-Gh-0Ki" secondAttribute="centerX" id="YU8-lH-Ta6"/>
-                <constraint firstAttribute="bottom" secondItem="5eq-u5-vw2" secondAttribute="bottom" constant="53" id="Z0h-f6-6MF"/>
                 <constraint firstItem="B0G-CD-e4a" firstAttribute="top" secondItem="agu-lF-Tfm" secondAttribute="bottom" constant="25" id="fb4-jx-drd"/>
                 <constraint firstAttribute="trailing" secondItem="B0G-CD-e4a" secondAttribute="trailing" constant="8" id="s6q-cS-toP"/>
                 <constraint firstItem="B0G-CD-e4a" firstAttribute="leading" secondItem="BhZ-Gh-0Ki" secondAttribute="leading" constant="8" id="yEN-0w-9r5"/>
+                <constraint firstItem="bk2-5c-5IT" firstAttribute="centerX" secondItem="BhZ-Gh-0Ki" secondAttribute="centerX" id="yWC-ON-4Fo"/>
             </constraints>
             <connections>
                 <action selector="touchOutside:" destination="-1" eventType="touchUpInside" id="5He-7D-DyM"/>
