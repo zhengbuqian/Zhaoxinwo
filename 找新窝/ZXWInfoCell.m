@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *jushiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel;
+//@property (weak) IBOutlet UIImage *userHeadPortrait;
+@property (strong, nonatomic) IBOutlet UIImageView *userHeadPortraitImageView;
+
 
 @end
 
@@ -80,11 +83,15 @@
     _cellString = [cellString copy];
     self.cellLabel.text = _cellString;
 }
+- (void)setUserHeadPortrait:(UIImage *)userHeadPortrait {
+    _userHeadPortrait = [userHeadPortrait copy];
+    self.userHeadPortraitImageView.image = _userHeadPortrait;
+}
 - (void)setCellData:(NSDictionary *)cellData {
     _cellData = [cellData copy];
     NSDictionary *authorInfoDic = _cellData[@"author"];
     self.authorNameString = authorInfoDic[@"name"];
-    self.authorPubTimeString = authorInfoDic[@"pub_time"];
+    self.authorPubTimeString = _cellData[@"pub_time"];
     self.titleString = _cellData[@"title"];
     self.mainContentString = _cellData[@"text"];
     
@@ -160,6 +167,9 @@
     } else {
         self.cellString = @"";
     }*/
+    
+    
+    
     
 }
 /*

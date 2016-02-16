@@ -21,4 +21,7 @@
 @property (copy, nonatomic) NSString *cellString;
 
 @property (copy, nonatomic) NSDictionary *cellData;
+
+@property (copy, nonatomic) UIImage *userHeadPortrait;
+
 @end

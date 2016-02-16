@@ -144,6 +144,7 @@
                 <outlet property="priceLabel" destination="TvU-YA-O4r" id="oRc-OT-KZL"/>
                 <outlet property="similarMessageLabel" destination="2ue-e7-ssA" id="Fa1-v9-nxw"/>
                 <outlet property="titleLabel" destination="Pz2-e9-36N" id="t2W-rx-2mE"/>
+                <outlet property="userHeadPortraitImageView" destination="MGh-7i-lnI" id="yr3-vY-CSk"/>
             </connections>
             <point key="canvasLocation" x="232" y="191"/>
         </tableViewCell>

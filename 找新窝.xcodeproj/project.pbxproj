@@ -26,6 +26,7 @@
 		1E0A55911C63816C00611A95 /* MJRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0A558C1C63816C00611A95 /* MJRefreshGifHeader.m */; };
 		1E0A55921C63816C00611A95 /* MJRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0A558E1C63816C00611A95 /* MJRefreshNormalHeader.m */; };
 		1E0A55931C63816C00611A95 /* MJRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0A55901C63816C00611A95 /* MJRefreshStateHeader.m */; };
+		1E1AAFF41C70B4B700410126 /* ZXWHeadPortraitStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AAFF31C70B4B700410126 /* ZXWHeadPortraitStore.m */; };
 		1EAAB0531C607B77007F7E07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0521C607B77007F7E07 /* main.m */; };
 		1EAAB0561C607B77007F7E07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0551C607B77007F7E07 /* AppDelegate.m */; };
 		1EAAB05C1C607B77007F7E07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB05A1C607B77007F7E07 /* Main.storyboard */; };
@@ -78,6 +79,8 @@
 		1E0A558E1C63816C00611A95 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalHeader.m; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.m; sourceTree = "<group>"; };
 		1E0A558F1C63816C00611A95 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		1E0A55901C63816C00611A95 /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
+		1E1AAFF21C70B4B700410126 /* ZXWHeadPortraitStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXWHeadPortraitStore.h; sourceTree = "<group>"; };
+		1E1AAFF31C70B4B700410126 /* ZXWHeadPortraitStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXWHeadPortraitStore.m; sourceTree = "<group>"; };
 		1EAAB04E1C607B77007F7E07 /* 找新窝.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "找新窝.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAAB0521C607B77007F7E07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1EAAB0541C607B77007F7E07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 			children = (
 				1EAAB07C1C60A654007F7E07 /* ZXWRetriveData.h */,
 				1EAAB07D1C60A654007F7E07 /* ZXWRetriveData.m */,
+				1E1AAFF21C70B4B700410126 /* ZXWHeadPortraitStore.h */,
+				1E1AAFF31C70B4B700410126 /* ZXWHeadPortraitStore.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				1E0A555E1C6380B600611A95 /* UIScrollView+MJRefresh.m in Sources */,
 				1E0A55701C6380DD00611A95 /* MJRefreshComponent.m in Sources */,
 				1EAAB06F1C60822B007F7E07 /* ZXWInfoTableViewController.m in Sources */,
+				1E1AAFF41C70B4B700410126 /* ZXWHeadPortraitStore.m in Sources */,
 				1E0A55721C6380DD00611A95 /* MJRefreshHeader.m in Sources */,
 				1EAAB07E1C60A654007F7E07 /* ZXWRetriveData.m in Sources */,
 				1EAAB0741C608C09007F7E07 /* ZXWHomeViewController.m in Sources */,

@@ -97,6 +97,9 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
         //NSLog(@"here %d", indexPath.row);
         cell.cellData = self.data.resultArray[indexPath.row];
     }
+    if ([self.data.userHeadPortraitArray count] > indexPath.row) {
+        cell.userHeadPortrait = self.data.userHeadPortraitArray[indexPath.row];
+    }
     return cell;
 }
 
@@ -130,7 +133,7 @@ willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)startRetriveData {
     int count = 0;
-    NSLog(@"startRetriveData %d", count);
+    //NSLog(@"startRetriveData %d", count);
     count++;
     void (^blk)() = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -139,12 +142,7 @@ willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     };
     
     [self.data startWithBlock:blk];
-//    [self.data performSelectorInBackground:@selector(start)
-//                                withObject:nil];
-    //NSLog(@"startRetriveData2");
-    //dispatch_async(dispatch_get_main_queue(), ^{[self.tableView reloadData];});
-    
-    //NSLog(@"startRetriveData3");
+
 }
 
 /*

@@ -23,6 +23,7 @@
     self = [super init];
     if (self) {
         self.resultArray = [[NSMutableArray alloc] initWithCapacity:200];
+        self.userHeadPortraitArray = [[NSMutableArray alloc] initWithCapacity:200];
         //self.searchKeyword = searchKeyWord;
         //self.pageNumber = pageNumber;
     }
@@ -46,15 +47,31 @@
              id objCopy = [obj copy];
              [self.resultArray addObject:objCopy];
          }
-         NSLog(@"pageNumber: %d", self.pageNumber);
+         //NSLog(@"pageNumber: %d", self.pageNumber);
+         
+         NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+         NSInvocationOperation *op = [[NSInvocationOperation alloc] initWithTarget:self
+                                                                          selector:@selector(downloadHeadPortraitWithBlock:)
+                                                                            object:block];
+         [operationQueue addOperation:op];
          block();
-         /*dispatch_async(dispatch_get_main_queue(),^{
-             
-             [self.tableView reloadData];
-         });*/
+         
      }];
     [dataTask resume];
     self.pageNumber++;
+}
+
+- (void)downloadHeadPortraitWithBlock:(void (^)())block {
+    for (int i = (self.pageNumber - 2) * 5 ;i - (self.pageNumber - 2) * 5 < 5 ; i ++ ) {
+        NSDictionary *dictionary = [self.resultArray objectAtIndex:i];
+        NSDictionary *authorDic = dictionary[@"author"];
+        NSString *userHeadPortraitURLString = authorDic[@"avatar"];
+        NSURL *userHeadPortraitURL = [NSURL URLWithString:userHeadPortraitURLString];
+        
+        UIImage *headPortrait = [UIImage imageWithData:[NSData dataWithContentsOfURL:userHeadPortraitURL]];
+        [self.userHeadPortraitArray addObject:headPortrait];
+        block();
+    }
 }
 
 @end
