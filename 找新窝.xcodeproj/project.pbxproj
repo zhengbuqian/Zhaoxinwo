@@ -32,6 +32,7 @@
 		1E1AB00A1C73447900410126 /* ZXWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB0081C73447900410126 /* ZXWAboutViewController.m */; };
 		1E1AB00B1C73447900410126 /* ZXWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1AB0091C73447900410126 /* ZXWAboutViewController.xib */; };
 		1E1AB00E1C7346B000410126 /* UIEmailLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1AB00D1C7346B000410126 /* UIEmailLabel.m */; };
+		1EA737F51C75B24C00595EFD /* UIMainContentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA737F41C75B24C00595EFD /* UIMainContentLabel.m */; };
 		1EAAB0531C607B77007F7E07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0521C607B77007F7E07 /* main.m */; };
 		1EAAB0561C607B77007F7E07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EAAB0551C607B77007F7E07 /* AppDelegate.m */; };
 		1EAAB05C1C607B77007F7E07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAAB05A1C607B77007F7E07 /* Main.storyboard */; };
@@ -95,6 +96,8 @@
 		1E1AB0091C73447900410126 /* ZXWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXWAboutViewController.xib; sourceTree = "<group>"; };
 		1E1AB00C1C7346B000410126 /* UIEmailLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEmailLabel.h; sourceTree = "<group>"; };
 		1E1AB00D1C7346B000410126 /* UIEmailLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEmailLabel.m; sourceTree = "<group>"; };
+		1EA737F31C75B24C00595EFD /* UIMainContentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMainContentLabel.h; sourceTree = "<group>"; };
+		1EA737F41C75B24C00595EFD /* UIMainContentLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMainContentLabel.m; sourceTree = "<group>"; };
 		1EAAB04E1C607B77007F7E07 /* 找新窝.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "找新窝.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAAB0521C607B77007F7E07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1EAAB0541C607B77007F7E07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				1E1AAFF91C730F4900410126 /* UITitleLabel.m */,
 				1E1AB00C1C7346B000410126 /* UIEmailLabel.h */,
 				1E1AB00D1C7346B000410126 /* UIEmailLabel.m */,
+				1EA737F31C75B24C00595EFD /* UIMainContentLabel.h */,
+				1EA737F41C75B24C00595EFD /* UIMainContentLabel.m */,
 			);
 			name = CustomLabelForCell;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				1E0A55891C63815D00611A95 /* MJRefreshAutoNormalFooter.m in Sources */,
 				1E1AAFF71C73066F00410126 /* UICellLabel.m in Sources */,
 				1E0A558A1C63815D00611A95 /* MJRefreshAutoStateFooter.m in Sources */,
+				1EA737F51C75B24C00595EFD /* UIMainContentLabel.m in Sources */,
 				1E0A555F1C6380B600611A95 /* UIView+MJExtension.m in Sources */,
 				1EAAB0531C607B77007F7E07 /* main.m in Sources */,
 				1EAAB07A1C60967F007F7E07 /* ZXWInfoCell.m in Sources */,

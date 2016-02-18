@@ -55,18 +55,13 @@
 }
 - (void)longPress:(UIGestureRecognizer *)gr {
     [self becomeFirstResponder];
-    //UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copy:)];
-    //[[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObjects: nil]];
     [[UIMenuController sharedMenuController] setTargetRect:self.frame inView:self.superview];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated: YES];
-    //NSLog(@"longPress");
 }
 - (void)tap:(UIGestureRecognizer *)gr {
     [self becomeFirstResponder];
-    //NSLog(@"tap");
     NSString *telString = @"tel://";
     NSString *urlString = [telString stringByAppendingString:self.text];
-    //NSLog(@"%@", urlString);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 

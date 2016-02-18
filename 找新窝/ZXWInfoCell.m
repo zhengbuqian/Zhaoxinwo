@@ -8,6 +8,10 @@
 
 #import "ZXWInfoCell.h"
 #import "UITitleLabel.h"
+#import "UIMainContentLabel.h"
+
+#define RGBColor(r, g, b) [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1]
+
 
 @interface ZXWInfoCell ()
 @property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
@@ -29,29 +33,23 @@
 
 @implementation ZXWInfoCell
 
-/*
+
 - (instancetype)init {
     self = [super init];
     if (self) {
-        UITapGestureRecognizer *cellLabelTapGestureRecognizer =
-            [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                    action:@selector(cellLabelTapped:)];
-        cellLabelTapGestureRecognizer.numberOfTapsRequired = 1;
-        [self.cellLabel addGestureRecognizer:cellLabelTapGestureRecognizer];
+        [self labelAttachTapHandler:self.mainContentLabel
+                         withAction:@selector(mainContentLabelTapped)];
     }
     return self;
 }
- */
+ 
 - (void)awakeFromNib {
-    /*self.mainContentButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.mainContentButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.mainContentButton.titleLabel.numberOfLines = 4;*/
-    //self.mainContentButton.lin
+    [self labelAttachTapHandler:self.mainContentLabel
+                     withAction:@selector(mainContentLabelTapped)];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
 }
 
 - (void)setAuthorNameString:(NSString *)authorNameString {
@@ -83,7 +81,54 @@
 }
 - (void)setMetroString:(NSString *)metroString {
     _metroString = [metroString copy];
-    self.metroLabel.text = _metroString;
+    
+    if ([_metroString length] > 1) {
+        NSArray *allMetroArray = @[@"1号线", @"2号线", @"大兴线", @"4号线", @"5号线", @"6号线", @"7号线", @"8号线", @"9号线", @"10号线", @"13号线", @"14号线", @"15号线", @"房山线", @"昌平线", @"亦庄线", @"机场线", @"八通线"];
+        NSArray *metroColorArray = @[RGBColor(0xff, 0x66, 0x66),
+                                     RGBColor(0x00, 0x99, 0xcc),
+                                     RGBColor(0x66, 0x33, 0x66),
+                                     RGBColor(0xff, 0x69, 0xb4),
+                                     RGBColor(0xcc, 0xcc, 0x33),
+                                     RGBColor(0x99, 0xcc, 0x33),
+                                     RGBColor(0xff, 0xff, 0x66),
+                                     RGBColor(0x33, 0xcc, 0x33),
+                                     RGBColor(0x33, 0x33, 0x66),
+                                     RGBColor(0x66, 0x33, 0x99),
+                                     RGBColor(0x00, 0x66, 0x33),
+                                     RGBColor(0xff, 0x99, 0xcc),
+                                     RGBColor(0x00, 0x80, 0x80),
+                                     RGBColor(0xff, 0xb6, 0xc1),
+                                     RGBColor(0xff, 0x7f, 0x50),
+                                     RGBColor(0x80, 0x80, 0x00),
+                                     RGBColor(0xda, 0xa5, 0x20),
+                                     RGBColor(0xff, 0x00, 0xff)];
+        
+        NSDictionary *attribs = @{
+                                  NSForegroundColorAttributeName: self.metroLabel.textColor,
+                                  NSFontAttributeName: self.metroLabel.font
+                                  };
+        NSMutableAttributedString *metroAttributedString =
+            [[NSMutableAttributedString alloc] initWithString:_metroString
+                                                   attributes:attribs];
+        int colorIndex = 0;
+        for (NSString *metro in allMetroArray) {
+            
+            NSRange range = [metroString rangeOfString:metro];
+            if (range.location != NSNotFound) {
+                [metroAttributedString setAttributes:
+                    @{NSForegroundColorAttributeName:[metroColorArray objectAtIndex:colorIndex]}
+                                               range:range];
+            }
+            
+            colorIndex++;
+        }
+        self.metroLabel.attributedText = metroAttributedString;
+        self.metroLabel.hidden = NO;
+    } else {
+        self.metroLabel.hidden = YES;
+    }
+    
+    
 }
 - (void)setAdressString:(NSString *)adressString {
     _adressString = [adressString copy];
@@ -98,8 +143,25 @@
     self.priceLabel.text = _priceString;
 }
 - (void)setCellString:(NSString *)cellString {
+    
+    
     _cellString = [cellString copy];
-    self.cellLabel.text = _cellString;
+    
+    if ([_cellString length] > 2) {
+        NSDictionary *attribs = @{
+                                  NSForegroundColorAttributeName: self.cellLabel.textColor,
+                                  NSFontAttributeName: self.cellLabel.font
+                                  };
+        NSAttributedString *cellAttributedString =
+                [[NSAttributedString alloc] initWithString:_cellString
+                                                attributes:attribs];
+        self.cellLabel.attributedText = cellAttributedString;
+        self.cellLabel.hidden = NO;
+    } else {
+        self.cellLabel.hidden = YES;
+    }
+    
+    //self.cellLabel.text = _cellString;
 }
 - (void)setUserHeadPortrait:(UIImage *)userHeadPortrait {
     _userHeadPortrait = [userHeadPortrait copy];
@@ -131,15 +193,6 @@
         [metroLabelString appendString:@" "];
     }
     self.metroString = metroLabelString;
-    /*if (metroArray) {
-        for(NSString *metro in metroArray) {
-            [metroLabelString appendString:metro];
-            [metroLabelString appendString:@" "];
-        }
-        self.metroString = metroLabelString;
-    } else {
-       self.metroString = @"";
-    }*/
     
     // 地址
     NSArray *adressArray = _cellData[@"dizhi"];
@@ -149,34 +202,14 @@
         [adressLabelString appendString:@" "];
     }
     self.adressString = adressLabelString;
-    /*if (adressArray) {
-        for (NSString *adress in adressArray) {
-            [adressLabelString appendString:adress];
-            [adressLabelString appendString:@" "];
-        }
-        self.adressString = adressLabelString;
-    } else {
-        self.adressString = @"";
-    }*/
     
     // 居室
     NSString *jushiLabelString = _cellData[@"jushi"];
     self.jushiString = jushiLabelString;
-    /*if (jushiLabelString) {
-        self.jushiString = jushiLabelString;
-    } else {
-        self.jushiString = @"";
-    }*/
     
     // 价格
     NSString *priceLabelString = _cellData[@"zujin"];
     self.priceString = priceLabelString;
-    /*if (priceLabelString) {
-        //priceLabelString = [priceLabelString stringByAppendingString:@"/月"];
-        self.priceString = priceLabelString;
-    } else {
-        self.priceString = @"";
-    }*/
     
     // 手机
     NSString *cellLabelString = _cellData[@"shouji"];
@@ -185,43 +218,23 @@
         self.cellLabel.hidden = YES;
         self.cellButton.hidden = YES;
     }
-    /*if (cellLabelString) {
-        self.cellString = cellLabelString;
-    } else {
-        self.cellString = @"";
-    }*/
-    
-    
     
     
 }
-/*
-- (IBAction)buttonPressed:(UIButton *)sender {
-    (sender.titleLabel.numberOfLines == 4)        ?
-            (sender.titleLabel.numberOfLines = 0) :
-            (sender.titleLabel.numberOfLines = 4) ;
-    CGSize mainContentButtonTitileLableSize = self.mainContentButton.titleLabel.frame.size;
-    [self.mainContentButton setFrame:CGRectMake(15, 84, mainContentButtonTitileLableSize.width, mainContentButtonTitileLableSize.height)];
-    [self.mainContentButton layoutIfNeeded];
-}
-*/
 
-/*
-- (void)cellLabelTapped:(UIGestureRecognizer *)gr {
-    NSLog(@"Recognized tap on cellLabel");
-    NSString *telString = @"tel://";
-    NSString *urlString = [telString stringByAppendingString:self.cellString];
-    NSLog(@"%@", urlString);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+- (void)mainContentLabelTapped {
+    NSLog(@"main content label tapped");
+    (self.mainContentLabel.numberOfLines == 0) ?
+            [self.mainContentLabel setNumberOfLines:5]:
+            [self.mainContentLabel setNumberOfLines:0];
+    //[self.superview reloadData];
 }
- */
-/*
-- (IBAction)cellNumberTapped:(id)sender {
-    NSString *telString = @"tel://";
-    NSString *urlString = [telString stringByAppendingString:self.cellString];
-    NSLog(@"%@", urlString);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+
+- (void)labelAttachTapHandler:(UILabel *)inputLabel withAction:(nullable SEL)action{
+    inputLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                            action:action];
+    [inputLabel addGestureRecognizer:tapGR];
 }
- */
 
 @end
