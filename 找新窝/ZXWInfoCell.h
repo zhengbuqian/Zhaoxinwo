@@ -26,5 +26,5 @@
 
 @property (copy, nonatomic) NSString *postLinkString;
 
-
+//- (void)mainContentLabelTapped;
 @end

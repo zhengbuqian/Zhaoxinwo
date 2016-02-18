@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="sHa-yq-gTe">
-                                <rect key="frame" x="270" y="129" width="60" height="60"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="基于豆瓣租房小组数据的搜房APP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfK-IQ-Li6">
                                 <rect key="frame" x="166" y="466" width="268" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -32,15 +29,18 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5OB-Ea-xAO">
+                                <rect key="frame" x="225" y="98" width="150" height="150"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.090196078431372548" green="0.25490196078431371" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="5OB-Ea-xAO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0KB-GW-5U9"/>
                             <constraint firstItem="WfK-IQ-Li6" firstAttribute="top" secondItem="JKb-wd-JVb" secondAttribute="bottom" constant="46" id="1UD-aA-HG9"/>
                             <constraint firstItem="WfK-IQ-Li6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1lq-M8-hHW"/>
                             <constraint firstItem="JKb-wd-JVb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WGf-AW-ov4"/>
+                            <constraint firstItem="5OB-Ea-xAO" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="78" id="cQB-Fh-fHt"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="WfK-IQ-Li6" secondAttribute="bottom" constant="112" id="eTP-0N-E47"/>
-                            <constraint firstItem="sHa-yq-gTe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hnj-0V-D8k"/>
-                            <constraint firstItem="sHa-yq-gTe" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="109" id="qGN-Zw-hTh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -50,6 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchScreenLogo" width="60" height="60"/>
+        <image name="LaunchScreenLogo" width="150" height="150"/>
     </resources>
 </document>

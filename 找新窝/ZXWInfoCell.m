@@ -12,6 +12,7 @@
 
 #define RGBColor(r, g, b) [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1]
 
+#define zeroHeightLabelFrame(label) CGRectMake(self.label.frame.origin.x, self.label.frame.origin.y, self.label.frame.size.width, 0)
 
 @interface ZXWInfoCell ()
 @property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
@@ -37,15 +38,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        /*
         [self labelAttachTapHandler:self.mainContentLabel
                          withAction:@selector(mainContentLabelTapped)];
+         */
     }
     return self;
 }
  
 - (void)awakeFromNib {
+    /*
     [self labelAttachTapHandler:self.mainContentLabel
                      withAction:@selector(mainContentLabelTapped)];
+     */
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -108,7 +113,7 @@
                                   NSFontAttributeName: self.metroLabel.font
                                   };
         NSMutableAttributedString *metroAttributedString =
-            [[NSMutableAttributedString alloc] initWithString:_metroString
+            [[NSMutableAttributedString alloc] initWithString:[@"🚇 " stringByAppendingString:_metroString]
                                                    attributes:attribs];
         int colorIndex = 0;
         for (NSString *metro in allMetroArray) {
@@ -125,22 +130,33 @@
         self.metroLabel.attributedText = metroAttributedString;
         self.metroLabel.hidden = NO;
     } else {
-        self.metroLabel.hidden = YES;
+        //CGRect zeroHeightFrame = CGRectMake(self.metroLabel.frame.origin.x, self.metroLabel.frame.origin.y, self.metroLabel.frame.size.width, 0);
+        self.metroLabel.text = @"";
     }
-    
-    
 }
 - (void)setAdressString:(NSString *)adressString {
     _adressString = [adressString copy];
-    self.adressLabel.text = _adressString;
+    if ([_adressString length] > 1) {
+        self.adressLabel.text = [@"🏢 " stringByAppendingString:_adressString];
+    } else {
+        self.adressLabel.text = @"";
+    }
 }
 - (void)setJushiString:(NSString *)jushiString {
     _jushiString = [jushiString copy];
-    self.jushiLabel.text = _jushiString;
+    if ([_jushiString length] > 1) {
+        self.jushiLabel.text = [@"🏚 " stringByAppendingString:_jushiString];
+    } else {
+        self.jushiLabel.text = @"";
+    }
 }
 - (void)setPriceString:(NSString *)priceString {
     _priceString = [priceString copy];
-    self.priceLabel.text = _priceString;
+    if ([_priceString length] > 1) {
+        self.priceLabel.text = [@"💲 " stringByAppendingString:_priceString];
+    } else {
+        self.priceLabel.text = @"";
+    }
 }
 - (void)setCellString:(NSString *)cellString {
     
@@ -152,16 +168,15 @@
                                   NSForegroundColorAttributeName: self.cellLabel.textColor,
                                   NSFontAttributeName: self.cellLabel.font
                                   };
+        
         NSAttributedString *cellAttributedString =
-                [[NSAttributedString alloc] initWithString:_cellString
+                [[NSAttributedString alloc] initWithString:[@"📱" stringByAppendingString:_cellString]
                                                 attributes:attribs];
         self.cellLabel.attributedText = cellAttributedString;
         self.cellLabel.hidden = NO;
     } else {
-        self.cellLabel.hidden = YES;
+        self.cellLabel.text = @"";
     }
-    
-    //self.cellLabel.text = _cellString;
 }
 - (void)setUserHeadPortrait:(UIImage *)userHeadPortrait {
     _userHeadPortrait = [userHeadPortrait copy];
@@ -221,12 +236,13 @@
     
     
 }
-
+/*
 - (void)mainContentLabelTapped {
-    NSLog(@"main content label tapped");
+    //NSLog(@"main content label tapped");
     (self.mainContentLabel.numberOfLines == 0) ?
             [self.mainContentLabel setNumberOfLines:5]:
             [self.mainContentLabel setNumberOfLines:0];
+    NSLog(@"lines: %d", self.mainContentLabel.numberOfLines);
     //[self.superview reloadData];
 }
 
@@ -235,6 +251,6 @@
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                             action:action];
     [inputLabel addGestureRecognizer:tapGR];
-}
+}*/
 
 @end

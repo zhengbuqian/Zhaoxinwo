@@ -23,6 +23,8 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 @property (strong) MJRefreshAutoNormalFooter *mjFooterView;
 
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
 @end
 
 @implementation ZXWInfoTableViewController
@@ -42,7 +44,7 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.estimatedRowHeight = 200;
+    self.tableView.estimatedRowHeight = 250;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     // 自定义一个footerView来加载更多
@@ -126,7 +128,11 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 - (NSIndexPath *)tableView:(UITableView *)tableView
       willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*[self.tableView beginUpdates];
+    /*id cell = [self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+    [cell mainContentLabelTapped];
+    [cell setNeedsLayout];
+    //self.selectedIndexPath = indexPath;
+    [self.tableView beginUpdates];
     [self.tableView endUpdates];
     NSLog(@"tableView:willSelectRowAtIndexPath:");*/
     return nil;

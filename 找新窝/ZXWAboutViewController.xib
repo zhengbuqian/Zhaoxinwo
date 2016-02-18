@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="A3s-Yr-VAU">
-                    <rect key="frame" x="270" y="120" width="60" height="60"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigLogo" translatesAutoresizingMaskIntoConstraints="NO" id="A3s-Yr-VAU">
+                    <rect key="frame" x="225" y="53" width="150" height="150"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找新窝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHC-Mg-otv">
                     <rect key="frame" x="258" y="211" width="84" height="34"/>
@@ -56,17 +56,17 @@
                 <constraint firstItem="M9g-wH-WLZ" firstAttribute="top" secondItem="LHC-Mg-otv" secondAttribute="bottom" constant="34" id="H7z-GO-pcL"/>
                 <constraint firstItem="E9o-lN-0Ju" firstAttribute="top" secondItem="QAq-wb-AH4" secondAttribute="bottom" constant="26" id="KHP-FY-4ci"/>
                 <constraint firstItem="A3s-Yr-VAU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qdh-HW-aEB"/>
+                <constraint firstItem="LHC-Mg-otv" firstAttribute="top" secondItem="A3s-Yr-VAU" secondAttribute="bottom" constant="8" id="WNG-Hd-1q9"/>
                 <constraint firstItem="R4C-iN-fpt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="XQO-bJ-mYX"/>
+                <constraint firstItem="A3s-Yr-VAU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="53" id="cR5-RM-4pR"/>
                 <constraint firstAttribute="trailing" secondItem="E9o-lN-0Ju" secondAttribute="trailing" constant="8" id="d1u-s0-e8s"/>
                 <constraint firstItem="QAq-wb-AH4" firstAttribute="top" secondItem="LHC-Mg-otv" secondAttribute="bottom" constant="34" id="m7r-LO-k7r"/>
                 <constraint firstItem="R4C-iN-fpt" firstAttribute="top" secondItem="M9g-wH-WLZ" secondAttribute="bottom" constant="26" id="nXW-pM-lQq"/>
-                <constraint firstItem="A3s-Yr-VAU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="qVA-sx-F2l"/>
                 <constraint firstItem="LHC-Mg-otv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x6U-c8-agf"/>
-                <constraint firstItem="LHC-Mg-otv" firstAttribute="top" secondItem="A3s-Yr-VAU" secondAttribute="bottom" constant="31" id="xCp-ue-57I"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="LaunchScreenLogo" width="60" height="60"/>
+        <image name="BigLogo" width="150" height="150"/>
     </resources>
 </document>

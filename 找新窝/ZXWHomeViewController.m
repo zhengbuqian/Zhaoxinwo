@@ -79,9 +79,12 @@
 }
 - (IBAction)aboutButtonPressed:(UIButton *)sender {
     ZXWAboutViewController *aboutVC = [[ZXWAboutViewController alloc] init];
-    aboutVC.title = @"关于";
+    aboutVC.title = @"关于找新窝";
     [self.navigationController pushViewController:aboutVC
                                          animated:YES];
+    //[self presentViewController:aboutVC
+    //                  animated:YES
+    //                 completion:nil];
 }
 
 
