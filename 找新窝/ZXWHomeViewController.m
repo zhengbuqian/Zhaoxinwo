@@ -25,17 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"找新窝";
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (IBAction)searchButtonPressed:(id)sender {
-    
-    //NSLog(@"%@", self.inputTextField.text);
-    //NSLog(@" ");
     if (![self connectedToNetwork]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"无法连接网络"
                                                                        message:nil
@@ -63,13 +58,9 @@
                            animated:YES
                          completion:nil];
     } else {
-        
-        
-        
         ZXWInfoTableViewController *infoVC = [[ZXWInfoTableViewController alloc]
                                               initWithSearchKeyword:self.inputTextField.text];
         infoVC.title = [NSString stringWithFormat:@"搜索结果: %@", self.inputTextField.text];
-        //infoVC.searchKeyWord = self.inputTextField.text;
         [infoVC startRetriveData];
         [self.navigationController pushViewController:infoVC
                                              animated:YES];
@@ -79,20 +70,6 @@
     [self.inputTextField resignFirstResponder];
 }
 
-
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (IBAction)jumpToSite:(UIButton *)sender {
     [[UIApplication sharedApplication]
      openURL:[NSURL URLWithString:@"http://zhaoxinwo.com"]];
@@ -102,9 +79,6 @@
     aboutVC.title = @"关于找新窝";
     [self.navigationController pushViewController:aboutVC
                                          animated:YES];
-    //[self presentViewController:aboutVC
-    //                  animated:YES
-    //                 completion:nil];
 }
 
 - (BOOL) connectedToNetwork

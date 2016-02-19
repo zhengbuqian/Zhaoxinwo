@@ -35,24 +35,6 @@
 @implementation ZXWInfoCell
 
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        /*
-        [self labelAttachTapHandler:self.mainContentLabel
-                         withAction:@selector(mainContentLabelTapped)];
-         */
-    }
-    return self;
-}
- 
-- (void)awakeFromNib {
-    /*
-    [self labelAttachTapHandler:self.mainContentLabel
-                     withAction:@selector(mainContentLabelTapped)];
-     */
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
@@ -130,7 +112,6 @@
         self.metroLabel.attributedText = metroAttributedString;
         self.metroLabel.hidden = NO;
     } else {
-        //CGRect zeroHeightFrame = CGRectMake(self.metroLabel.frame.origin.x, self.metroLabel.frame.origin.y, self.metroLabel.frame.size.width, 0);
         self.metroLabel.text = @"";
     }
 }
@@ -236,21 +217,6 @@
     
     
 }
-/*
-- (void)mainContentLabelTapped {
-    //NSLog(@"main content label tapped");
-    (self.mainContentLabel.numberOfLines == 0) ?
-            [self.mainContentLabel setNumberOfLines:5]:
-            [self.mainContentLabel setNumberOfLines:0];
-    NSLog(@"lines: %d", self.mainContentLabel.numberOfLines);
-    //[self.superview reloadData];
-}
 
-- (void)labelAttachTapHandler:(UILabel *)inputLabel withAction:(nullable SEL)action{
-    inputLabel.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                            action:action];
-    [inputLabel addGestureRecognizer:tapGR];
-}*/
 
 @end

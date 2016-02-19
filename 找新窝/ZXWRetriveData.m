@@ -17,15 +17,11 @@
 @implementation ZXWRetriveData
 
 - (instancetype)init {
-//WithSearchKeyWord:(NSString *)searchKeyWord
-//                        andPageNumber:(int)pageNumber {
     self = [super init];
     if (self) {
         self.resultArray = [[NSMutableArray alloc] initWithCapacity:200];
         self.userHeadPortraitArray = [[NSMutableArray alloc] initWithCapacity:200];
         _noMoreInfo = NO;
-        //self.searchKeyword = searchKeyWord;
-        //self.pageNumber = pageNumber;
     }
     return self;
 }
@@ -33,7 +29,6 @@
     NSString *urlString = [NSString stringWithFormat:@"http://182.92.159.73/apis/search/%@/%d/", self.searchKeyword, self.pageNumber];
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:set];
-    //NSLog(@"start outside");
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     NSURLSessionDataTask *dataTask =
@@ -44,7 +39,6 @@
              return;
          }
          NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-         //NSLog(@"%@", dataDic);
          NSArray *result = dataDic[@"result"];
          for (id obj in result) {
              id objCopy = [obj copy];
@@ -61,7 +55,6 @@
                                                                           selector:@selector(downloadHeadPortraitWithBlock:)
                                                                             object:block];
          [operationQueue addOperation:op];
-         //block();
      }];
     [dataTask resume];
     
