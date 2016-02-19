@@ -85,9 +85,10 @@
     self.mainContentLabel.text = _mainContentString;
 }
 - (void)setMetroString:(NSString *)metroString {
-    _metroString = [metroString copy];
+    NSString *tempMetroString = @"🚇 ";
+    _metroString = [tempMetroString stringByAppendingString:metroString];
     
-    if ([_metroString length] > 1) {
+    if ([_metroString length] > 3) {
         NSArray *allMetroArray = @[@"1号线", @"2号线", @"大兴线", @"4号线", @"5号线", @"6号线", @"7号线", @"8号线", @"9号线", @"10号线", @"13号线", @"14号线", @"15号线", @"房山线", @"昌平线", @"亦庄线", @"机场线", @"八通线"];
         NSArray *metroColorArray = @[RGBColor(0xff, 0x66, 0x66),
                                      RGBColor(0x00, 0x99, 0xcc),
@@ -113,12 +114,11 @@
                                   NSFontAttributeName: self.metroLabel.font
                                   };
         NSMutableAttributedString *metroAttributedString =
-            [[NSMutableAttributedString alloc] initWithString:[@"🚇 " stringByAppendingString:_metroString]
+            [[NSMutableAttributedString alloc] initWithString:_metroString
                                                    attributes:attribs];
         int colorIndex = 0;
         for (NSString *metro in allMetroArray) {
-            
-            NSRange range = [metroString rangeOfString:metro];
+            NSRange range = [_metroString rangeOfString:metro];
             if (range.location != NSNotFound) {
                 [metroAttributedString setAttributes:
                     @{NSForegroundColorAttributeName:[metroColorArray objectAtIndex:colorIndex]}
@@ -153,7 +153,7 @@
 - (void)setPriceString:(NSString *)priceString {
     _priceString = [priceString copy];
     if ([_priceString length] > 1) {
-        self.priceLabel.text = [@"💲 " stringByAppendingString:_priceString];
+        self.priceLabel.text = [@" ¥  " stringByAppendingString:_priceString];
     } else {
         self.priceLabel.text = @"";
     }

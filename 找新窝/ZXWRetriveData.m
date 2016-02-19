@@ -11,7 +11,6 @@
 @interface ZXWRetriveData ()
 
 
-
 @end
 
 
@@ -24,6 +23,7 @@
     if (self) {
         self.resultArray = [[NSMutableArray alloc] initWithCapacity:200];
         self.userHeadPortraitArray = [[NSMutableArray alloc] initWithCapacity:200];
+        _noMoreInfo = NO;
         //self.searchKeyword = searchKeyWord;
         //self.pageNumber = pageNumber;
     }
@@ -40,6 +40,9 @@
     [[NSURLSession sharedSession]
      dataTaskWithRequest:req
      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+         if (data == nil) {
+             return;
+         }
          NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
          //NSLog(@"%@", dataDic);
          NSArray *result = dataDic[@"result"];
@@ -47,8 +50,12 @@
              id objCopy = [obj copy];
              [self.resultArray addObject:objCopy];
          }
-         //NSLog(@"pageNumber: %d", self.pageNumber);
+         if ([result count] < 5) {
+             _noMoreInfo = YES;
+         }
          
+         NSLog(@"result number: %ld", (unsigned long)[result count]);
+         NSLog(@"pageNumber: %d", self.pageNumber);
          NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
          NSInvocationOperation *op = [[NSInvocationOperation alloc] initWithTarget:self
                                                                           selector:@selector(downloadHeadPortraitWithBlock:)
@@ -61,15 +68,18 @@
 }
 
 - (void)downloadHeadPortraitWithBlock:(void (^)())block {
-    for (int i = (self.pageNumber - 1) * 5 ;i - (self.pageNumber - 1) * 5 < 5 ; i ++ ) {
+    for (   int i = (self.pageNumber - 1) * 5 ;
+            i - (self.pageNumber - 1) * 5 < 5 && i < [self.resultArray count];
+            i ++ ) {
         NSDictionary *dictionary = [self.resultArray objectAtIndex:i];
         NSDictionary *authorDic = dictionary[@"author"];
         NSString *userHeadPortraitURLString = authorDic[@"avatar"];
         NSURL *userHeadPortraitURL = [NSURL URLWithString:userHeadPortraitURLString];
         
         UIImage *headPortrait = [UIImage imageWithData:[NSData dataWithContentsOfURL:userHeadPortraitURL]];
-        [self.userHeadPortraitArray addObject:headPortrait];
-        //block();
+        if (headPortrait != nil)
+            [self.userHeadPortraitArray addObject:headPortrait];
+        
     }
     block();
     self.pageNumber++;

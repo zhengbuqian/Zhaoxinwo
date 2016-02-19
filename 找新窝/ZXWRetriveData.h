@@ -13,6 +13,8 @@
 @property (nonatomic) int pageNumber;
 @property (strong, nonatomic) NSString *searchKeyword;
 @property (strong) NSMutableArray *userHeadPortraitArray;
+@property BOOL noMoreInfo;
+
 
 - (void)startWithBlock:(void (^)())block;
 //- (void)endInput      :(void (^)())completion;

@@ -73,8 +73,8 @@
                 <constraint firstAttribute="trailing" secondItem="agu-lF-Tfm" secondAttribute="trailing" constant="8" id="ULH-sD-tzC"/>
                 <constraint firstItem="DlJ-1h-ujt" firstAttribute="centerX" secondItem="BhZ-Gh-0Ki" secondAttribute="centerX" id="X33-pd-dVh"/>
                 <constraint firstItem="5eq-u5-vw2" firstAttribute="centerX" secondItem="BhZ-Gh-0Ki" secondAttribute="centerX" id="YU8-lH-Ta6"/>
+                <constraint firstItem="agu-lF-Tfm" firstAttribute="top" secondItem="w2H-BA-h91" secondAttribute="bottom" constant="15" id="bRm-5t-yGY"/>
                 <constraint firstItem="B0G-CD-e4a" firstAttribute="top" secondItem="agu-lF-Tfm" secondAttribute="bottom" constant="25" id="fb4-jx-drd"/>
-                <constraint firstItem="agu-lF-Tfm" firstAttribute="top" secondItem="w2H-BA-h91" secondAttribute="bottom" constant="15" id="otv-Qm-sNG"/>
                 <constraint firstAttribute="trailing" secondItem="B0G-CD-e4a" secondAttribute="trailing" constant="8" id="s6q-cS-toP"/>
                 <constraint firstItem="B0G-CD-e4a" firstAttribute="leading" secondItem="BhZ-Gh-0Ki" secondAttribute="leading" constant="8" id="yEN-0w-9r5"/>
                 <constraint firstItem="bk2-5c-5IT" firstAttribute="centerX" secondItem="BhZ-Gh-0Ki" secondAttribute="centerX" id="yWC-ON-4Fo"/>

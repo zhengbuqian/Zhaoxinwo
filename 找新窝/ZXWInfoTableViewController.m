@@ -9,7 +9,8 @@
 #import "ZXWInfoTableViewController.h"
 #import "ZXWInfoCell.h"
 #import "ZXWRetriveData.h"
-#import "MJRefresh.h"
+#import "SystemConfiguration/SCNetworkReachability.h"
+#import <netinet/in.h>
 
 static NSString *InfoCellReuseIdentifier = @"InfoCell";
 static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
@@ -20,9 +21,7 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 @property (strong, nonatomic) ZXWRetriveData *data;
 @property (nonatomic, getter=isLoading) BOOL loading;
-
-@property (strong) MJRefreshAutoNormalFooter *mjFooterView;
-
+@property (nonatomic) BOOL shouldLoadData;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @end
@@ -47,33 +46,24 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     self.tableView.estimatedRowHeight = 250;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    
     // 自定义一个footerView来加载更多
+    
     
     self.footerView = [[UITableViewHeaderFooterView alloc]
                        initWithReuseIdentifier:FooterViewIdentifier];
-    CGRect footerViewLabelRect = CGRectMake(84, 10, 150, 15);
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat centerX = screenBounds.size.width / 2;
+    CGFloat footerViewLabelWidth = 150;
+    CGRect footerViewLabelRect = CGRectMake(centerX - footerViewLabelWidth / 2, 10, footerViewLabelWidth, 15);
     self.footerViewLabel = [[UILabel alloc] initWithFrame:footerViewLabelRect];
-    self.footerViewLabel.text = @"上拉加载更多";
+    
+    self.footerViewLabel.text = @"正在加载中";
     self.footerViewLabel.textAlignment = NSTextAlignmentCenter;
     [self.footerView.contentView addSubview:self.footerViewLabel];
+
     self.tableView.tableFooterView = self.footerView;
-    
-    
-    // 使用MJRefresh，但是有问题就是只能加载两次
-    /*
-    self.mjFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
-                                                             refreshingAction:@selector(startRetriveData)];
-    self.mjFooterView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{[self startRetriveData];}];
-    self.tableView.tableFooterView = self.mjFooterView;
-     */
-    
-    // 使用UIRefreshControl，但是貌似只能做下拉刷新，不能做上拉加载更多
-    /*
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"上拉以加载更多"];
-    [refresh addTarget:self action:@selector(startRetriveData) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
-     */
+    self.tableView.userInteractionEnabled = NO;
     
     UINib *nib = [UINib nibWithNibName:@"ZXWInfoCell" bundle:nil];
     [self.tableView registerNib:nib
@@ -128,29 +118,72 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 - (NSIndexPath *)tableView:(UITableView *)tableView
       willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*id cell = [self tableView:self.tableView cellForRowAtIndexPath:indexPath];
-    [cell mainContentLabelTapped];
-    [cell setNeedsLayout];
-    //self.selectedIndexPath = indexPath;
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    NSLog(@"tableView:willSelectRowAtIndexPath:");*/
     return nil;
 }
-
+/*
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if ( scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height > 100
-        && !self.isLoading && [self.data.resultArray count] > 3) {       // && !isLoading
-        self.loading = YES;
+        && !self.isLoading && [self.data.resultArray count] > 3) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络无连接"
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"好的:)"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:nil];
+        [alert addAction:confirm];
+        if (![self connectedToNetwork]) {
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        if (self.data.noMoreInfo) {
+            alert.title = @"没有更多了";
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
         
-        self.footerViewLabel.text = @"加载中...";
-        CGRect rectToShow = CGRectMake(self.tableView.tableFooterView.frame.origin.x,
-                                       self.tableView.tableFooterView.frame.origin.y,
-                                       self.tableView.tableFooterView.frame.size.width,
-                                       self.tableView.tableFooterView.frame.size.height + 50);
-        [self.tableView scrollRectToVisible:rectToShow animated:YES];
+        self.loading = YES;
+        self.footerViewLabel.text = @"正在加载中...";
         [self startRetriveData];
+    }
+}*/
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if ( scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height > 100
+        && !self.isLoading && [self.data.resultArray count] > 3) {
+        self.footerViewLabel.text = @"松开即可刷新";
+        self.shouldLoadData = YES;
+    } else if ([self.data.resultArray count] > 3){
+        self.footerViewLabel.text = @"上拉加载更多";
+        self.shouldLoadData = NO;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate {
+    if (self.shouldLoadData) {
+        
+        self.footerViewLabel.text = @"正在加载中...";
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络无连接"
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"好的:)"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:nil];
+        [alert addAction:confirm];
+        if (![self connectedToNetwork]) {
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        if (self.data.noMoreInfo) {
+            alert.title = @"没有更多了";
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        
+        self.loading = YES;
+        [self startRetriveData];
+        self.shouldLoadData = NO;
     }
 }
 
@@ -172,16 +205,12 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     void (^blk)() = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
-            
+            NSLog(@"Did reload data");
             // 使用footerView加载更多
             self.loading = NO;
             self.footerViewLabel.text = @"上拉加载更多";
-            
-            
-            // 使用UIRefreshControl
-             /*
-            [self.refreshControl endRefreshing];
-             */
+            self.tableView.userInteractionEnabled = YES;
+
         });
     };
     
@@ -232,5 +261,28 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     // Pass the selected object to the new view controller.
 }
 */
+- (BOOL) connectedToNetwork
+{
+    //创建零地址，0.0.0.0的地址表示查询本机的网络连接状态
+    struct sockaddr_in zeroAddress;
+    bzero(&zeroAddress, sizeof(zeroAddress));
+    zeroAddress.sin_len = sizeof(zeroAddress);
+    zeroAddress.sin_family = AF_INET;
+    // Recover reachability flags
+    SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);
+    SCNetworkReachabilityFlags flags;
+    //获得连接的标志
+    BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
+    CFRelease(defaultRouteReachability);
+    //如果不能获取连接标志，则不能连接网络，直接返回
+    if (!didRetrieveFlags)
+    {
+        return NO;
+    }
+    //根据获得的连接标志进行判断
+    BOOL isReachable = flags & kSCNetworkFlagsReachable;
+    BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
+    return (isReachable && !needsConnection) ? YES : NO;
+}
 
 @end
