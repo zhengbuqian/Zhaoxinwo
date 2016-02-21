@@ -9,11 +9,12 @@
 #import "ZXWInfoTableViewController.h"
 #import "ZXWInfoCell.h"
 #import "ZXWRetriveData.h"
-#import "SystemConfiguration/SCNetworkReachability.h"
-#import <netinet/in.h>
+#import "UIViewController+ShowPromptAlert.h"
+#import "NSObject+TestNetwork.h"
 
 static NSString *InfoCellReuseIdentifier = @"InfoCell";
 static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
+
 
 @interface ZXWInfoTableViewController ()
 @property (strong, nonatomic) UITableViewHeaderFooterView *footerView;
@@ -23,6 +24,7 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 @property (nonatomic, getter=isLoading) BOOL loading;
 @property (nonatomic) BOOL shouldLoadData;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (copy) void (^reloadBlock)() ;
 
 @end
 
@@ -30,7 +32,6 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 
 - (instancetype)initWithSearchKeyword:(NSString *)searchKeyWord {
     self = [super init];
-    
     if (self) {
         self.data = [[ZXWRetriveData alloc] init];
         self.pageNumber = 1;
@@ -82,10 +83,8 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    unsigned long number = [self.data.resultArray count];
-    return number;
+    return [self.data.resultArray count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZXWInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:InfoCellReuseIdentifier
@@ -100,6 +99,7 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     if ([self.data.userHeadPortraitArray count] > indexPath.row) {
         cell.userHeadPortrait = self.data.userHeadPortraitArray[indexPath.row];
     }
+    
     return cell;
 }
 
@@ -125,23 +125,14 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     if (self.shouldLoadData) {
         
         self.footerViewLabel.text = @"正在加载中...";
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络无连接"
-                                                                       message:nil
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"好的:)"
-                                                          style:UIAlertActionStyleDefault
-                                                        handler:nil];
-        [alert addAction:confirm];
         if (![self connectedToNetwork]) {
-            [self presentViewController:alert animated:YES completion:nil];
+            [self showAlert:@"好像没有网络连接哦"];
             return;
         }
         if (self.data.noMoreInfo) {
-            alert.title = @"没有更多了";
-            [self presentViewController:alert animated:YES completion:nil];
+            [self showAlert:@"没有更多啦"];
             return;
         }
-        
         self.loading = YES;
         [self startRetriveData];
         self.shouldLoadData = NO;
@@ -161,41 +152,13 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     void (^blk)() = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
-            NSLog(@"Did reload data");
-            // 使用footerView加载更多
             self.loading = NO;
             self.footerViewLabel.text = @"上拉加载更多";
             self.tableView.userInteractionEnabled = YES;
-
         });
     };
-    
     [self.data startWithBlock:blk];
-
 }
 
-- (BOOL) connectedToNetwork
-{
-    //创建零地址，0.0.0.0的地址表示查询本机的网络连接状态
-    struct sockaddr_in zeroAddress;
-    bzero(&zeroAddress, sizeof(zeroAddress));
-    zeroAddress.sin_len = sizeof(zeroAddress);
-    zeroAddress.sin_family = AF_INET;
-    // Recover reachability flags
-    SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);
-    SCNetworkReachabilityFlags flags;
-    //获得连接的标志
-    BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
-    CFRelease(defaultRouteReachability);
-    //如果不能获取连接标志，则不能连接网络，直接返回
-    if (!didRetrieveFlags)
-    {
-        return NO;
-    }
-    //根据获得的连接标志进行判断
-    BOOL isReachable = flags & kSCNetworkFlagsReachable;
-    BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
-    return (isReachable && !needsConnection) ? YES : NO;
-}
 
 @end

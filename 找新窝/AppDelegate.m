@@ -16,7 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen.mainScreen bounds]];
+    //self.window = [[UIWindow alloc] initWithFrame:[UIScreen.mainScreen bounds]];
+    self.window = [[[UIApplication sharedApplication] delegate] window];
     ZXWHomeViewController *homeVC = [[ZXWHomeViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeVC];
     self.window.rootViewController = navController;

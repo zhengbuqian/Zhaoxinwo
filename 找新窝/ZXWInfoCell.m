@@ -8,7 +8,7 @@
 
 #import "ZXWInfoCell.h"
 #import "UITitleLabel.h"
-#import "UIMainContentLabel.h"
+#import "ZXWImageViewController.h"
 
 #define RGBColor(r, g, b) [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1]
 
@@ -28,7 +28,9 @@
 @property (weak, nonatomic) IBOutlet UICellLabel *cellLabel;
 //@property (weak) IBOutlet UIImage *userHeadPortrait;
 @property (strong, nonatomic) IBOutlet UIImageView *userHeadPortraitImageView;
-@property (weak, nonatomic) IBOutlet UIButton *cellButton;
+@property (weak, nonatomic) IBOutlet UIButton *viewImageButton;
+@property (strong) NSArray *imageAdressArray;
+
 
 @end
 
@@ -200,23 +202,29 @@
     self.adressString = adressLabelString;
     
     // 居室
-    NSString *jushiLabelString = _cellData[@"jushi"];
-    self.jushiString = jushiLabelString;
+    self.jushiString = _cellData[@"jushi"];
     
     // 价格
-    NSString *priceLabelString = _cellData[@"zujin"];
-    self.priceString = priceLabelString;
+    self.priceString = _cellData[@"zujin"];
     
     // 手机
-    NSString *cellLabelString = _cellData[@"shouji"];
-    self.cellString = cellLabelString;
-    if ([cellLabelString length] < 5) {
+    self.cellString = _cellData[@"shouji"];
+    if ([self.cellString length] < 5) {
         self.cellLabel.hidden = YES;
-        self.cellButton.hidden = YES;
     }
     
-    
+    // 图片
+    self.imageAdressArray = _cellData[@"images"];
+    self.viewImageButton.hidden = [self.imageAdressArray count] > 0 ? NO:YES ;
+    self.viewImageButton.userInteractionEnabled = !self.viewImageButton.hidden;
 }
+
+- (IBAction)viewImageButtonPressed:(UIButton *)sender {
+    ZXWImageViewController *imageVC = [[ZXWImageViewController alloc] initWithAdreddArray:self.imageAdressArray];
+    __weak id rootVC = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [rootVC pushViewController:imageVC animated:YES];
+}
+
 
 
 @end

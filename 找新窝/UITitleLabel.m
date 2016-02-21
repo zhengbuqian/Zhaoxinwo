@@ -19,7 +19,6 @@
 */
 
 - (void)tap:(UIGestureRecognizer *)gr {
-    NSLog(@"title taped, test override method");
     NSURL *postURL = [NSURL URLWithString:self.postLink];
     [[UIApplication sharedApplication] openURL:postURL];
 }

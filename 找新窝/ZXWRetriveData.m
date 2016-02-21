@@ -47,9 +47,6 @@
          if ([result count] < 5) {
              _noMoreInfo = YES;
          }
-         
-         NSLog(@"result number: %ld", (unsigned long)[result count]);
-         NSLog(@"pageNumber: %d", self.pageNumber);
          NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
          NSInvocationOperation *op = [[NSInvocationOperation alloc] initWithTarget:self
                                                                           selector:@selector(downloadHeadPortraitWithBlock:)
@@ -57,7 +54,6 @@
          [operationQueue addOperation:op];
      }];
     [dataTask resume];
-    
 }
 
 - (void)downloadHeadPortraitWithBlock:(void (^)())block {
@@ -72,7 +68,6 @@
         UIImage *headPortrait = [UIImage imageWithData:[NSData dataWithContentsOfURL:userHeadPortraitURL]];
         if (headPortrait != nil)
             [self.userHeadPortraitArray addObject:headPortrait];
-        
     }
     block();
     self.pageNumber++;
