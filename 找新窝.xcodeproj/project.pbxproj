@@ -310,7 +310,7 @@
 				TargetAttributes = {
 					1EAAB04D1C607B77007F7E07 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = Q7D6Q96KMH;
+						DevelopmentTeam = S67CG4M6KA;
 					};
 				};
 			};
@@ -496,11 +496,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "找新窝/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhengbuqian.ZXW;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengbuqian.zhaoxinwoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -508,11 +510,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "找新窝/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhengbuqian.ZXW;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhengbuqian.zhaoxinwoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"找新窝";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] init];
+    self.navigationItem.backBarButtonItem.title = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,12 +34,12 @@
 }
 - (IBAction)searchButtonPressed:(id)sender {
     if (![self connectedToNetwork]) {
-        [self showAlert:@"好像没有网络哦"];
+        [self showPromptAlert:@"好像没有网络哦"];
         return;
     }
     
     if (self.inputTextField.text.length == 0) {
-        [self showAlert:@"先输入一个地点吧"];
+        [self showPromptAlert:@"先输入一个地点吧"];
     } else {
         ZXWInfoTableViewController *infoVC = [[ZXWInfoTableViewController alloc]
                                               initWithSearchKeyword:self.inputTextField.text];

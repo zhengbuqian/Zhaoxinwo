@@ -37,46 +37,44 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
         self.pageNumber = 1;
         self.searchKeyWord = searchKeyWord;
         self.loading = NO;
+        
+        self.tableView.estimatedRowHeight = 250;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        
+        self.footerView = [[UITableViewHeaderFooterView alloc]
+                           initWithReuseIdentifier:FooterViewIdentifier];
+        CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        CGFloat centerX = screenBounds.size.width / 2;
+        CGFloat footerViewLabelWidth = 150;
+        CGRect footerViewLabelRect = CGRectMake(centerX - footerViewLabelWidth / 2, 10, footerViewLabelWidth, 15);
+        self.footerViewLabel = [[UILabel alloc] initWithFrame:footerViewLabelRect];
+        self.footerViewLabel.text = @"正在加载中";
+        self.footerViewLabel.textAlignment = NSTextAlignmentCenter;
+        [self.footerView.contentView addSubview:self.footerViewLabel];
+        self.tableView.tableFooterView = self.footerView;
+        self.tableView.backgroundColor = [UIColor colorWithRed:243
+                                                                         green:243
+                                                                          blue:243
+                                                                         alpha:1];
+
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] init];
+        self.navigationItem.backBarButtonItem.title = @"";
+        
+        UINib *nib = [UINib nibWithNibName:@"ZXWInfoCell" bundle:nil];
+        [self.tableView registerNib:nib
+             forCellReuseIdentifier:InfoCellReuseIdentifier];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.estimatedRowHeight = 250;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
-    self.footerView = [[UITableViewHeaderFooterView alloc]
-                       initWithReuseIdentifier:FooterViewIdentifier];
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGFloat centerX = screenBounds.size.width / 2;
-    CGFloat footerViewLabelWidth = 150;
-    CGRect footerViewLabelRect = CGRectMake(centerX - footerViewLabelWidth / 2, 10, footerViewLabelWidth, 15);
-    self.footerViewLabel = [[UILabel alloc] initWithFrame:footerViewLabelRect];
-    
-    self.footerViewLabel.text = @"正在加载中";
-    self.footerViewLabel.textAlignment = NSTextAlignmentCenter;
-    [self.footerView.contentView addSubview:self.footerViewLabel];
-
-    self.tableView.tableFooterView = self.footerView;
-    self.tableView.userInteractionEnabled = NO;
-    
-    UINib *nib = [UINib nibWithNibName:@"ZXWInfoCell" bundle:nil];
-    [self.tableView registerNib:nib
-         forCellReuseIdentifier:InfoCellReuseIdentifier];
-    
+    [self setSeperatorLine];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-        UIAlertController *alert =
-            [UIAlertController alertControllerWithTitle:@"点击信息标题可以跳转至该条租房信息的豆瓣贴子里"
-                                                message:@"点击电话号码（如果有）可以进行拨号。长按电话号码可以复制。"
-                                         preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"好，知道了"
-                                                          style:UIAlertActionStyleDefault
-                                                        handler:nil];
-        [alert addAction:confirm];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self showAlertTitle:@"点击信息标题可以跳转至该条租房信息的豆瓣贴子里"
+                     message:@"点击电话号码（如果有）可以进行拨号。长按电话号码可以复制。"
+           andConfirmMessage:@"好，知道了"];
     }
 }
 
@@ -103,6 +101,19 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 - (NSIndexPath *)tableView:(UITableView *)tableView
       willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
@@ -126,11 +137,11 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
         
         self.footerViewLabel.text = @"正在加载中...";
         if (![self connectedToNetwork]) {
-            [self showAlert:@"好像没有网络连接哦"];
+            [self showPromptAlert:@"好像没有网络连接哦"];
             return;
         }
         if (self.data.noMoreInfo) {
-            [self showAlert:@"没有更多啦"];
+            [self showPromptAlert:@"没有更多啦"];
             return;
         }
         self.loading = YES;
@@ -160,5 +171,16 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
     [self.data startWithBlock:blk];
 }
 
+- (void)setSeperatorLine {
+    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
 @end

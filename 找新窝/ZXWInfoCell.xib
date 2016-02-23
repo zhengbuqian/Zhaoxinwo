@@ -8,11 +8,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="265" id="o8n-EJ-VF2" customClass="ZXWInfoCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="256" id="o8n-EJ-VF2" customClass="ZXWInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="251"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o8n-EJ-VF2" id="ge5-Po-qKh">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="259"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MGh-7i-lnI">
@@ -48,20 +48,34 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pz2-e9-36N" customClass="UITitleLabel">
-                        <rect key="frame" x="15" y="54" width="290" height="33"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                        <color key="textColor" red="0.33725490196078434" green="0.61960784313725492" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pz2-e9-36N" customClass="UITitleLabel">
+                        <rect key="frame" x="15" y="54" width="290" height="26"/>
+                        <attributedString key="attributedText">
+                            <fragment content="标题">
+                                <attributes>
+                                    <color key="NSColor" red="0.33725490196078434" green="0.61960784313725492" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="18" name="PingFangSC-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLs-8c-rWi">
-                        <rect key="frame" x="15" y="95" width="290" height="20"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="15" y="88" width="290" height="20"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.0" colorSpace="calibratedRGB"/>
                         <attributedString key="attributedText">
                             <fragment content=" ">
                                 <attributes>
                                     <color key="NSColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                    <font key="NSFont" size="14" name="TrebuchetMS-Italic"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="正文">
+                                <attributes>
+                                    <color key="NSColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="14" name="PingFangSC-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -69,7 +83,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAr-YL-E8p">
-                        <rect key="frame" x="15" y="123" width="290" height="17"/>
+                        <rect key="frame" x="15" y="116" width="290" height="17"/>
                         <attributedString key="attributedText">
                             <fragment content=" ">
                                 <attributes>
@@ -82,30 +96,30 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbj-YE-Wmq">
-                        <rect key="frame" x="15" y="174" width="290" height="17"/>
+                        <rect key="frame" x="15" y="167" width="290" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvU-YA-O4r">
-                        <rect key="frame" x="15" y="199" width="290" height="17"/>
+                        <rect key="frame" x="15" y="192" width="290" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oK-C9-y1S">
-                        <rect key="frame" x="15" y="148" width="290" height="17"/>
+                        <rect key="frame" x="15" y="141" width="290" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2s-lp-qVE" customClass="UICellLabel">
-                        <rect key="frame" x="15" y="224" width="147" height="21"/>
+                        <rect key="frame" x="15" y="217" width="147" height="21"/>
                         <attributedString key="attributedText">
                             <fragment content=" ">
                                 <attributes>
                                     <color key="NSColor" red="0.15294117647058825" green="0.43137254901960786" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="18" name="HelveticaNeue"/>
+                                    <font key="NSFont" size="18" name="GillSans"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -113,48 +127,49 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R79-Jb-UVS">
-                        <rect key="frame" x="192" y="221" width="113" height="30"/>
+                        <rect key="frame" x="192" y="214" width="113" height="30"/>
                         <state key="normal" title="查看图片"/>
                         <connections>
                             <action selector="viewImageButtonPressed:" destination="o8n-EJ-VF2" eventType="touchUpInside" id="uUs-gh-IPP"/>
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="NAr-YL-E8p" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="1qT-YB-RgD"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="R79-Jb-UVS" secondAttribute="trailing" constant="7" id="2hb-Iw-wyT"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="0oK-C9-y1S" secondAttribute="trailing" constant="7" id="2lq-GT-wrv"/>
                     <constraint firstItem="qQB-aH-N9G" firstAttribute="baseline" secondItem="MGh-7i-lnI" secondAttribute="baseline" id="3jc-tt-qvd"/>
-                    <constraint firstItem="R79-Jb-UVS" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="184" id="4Vs-Yl-HVN"/>
-                    <constraint firstItem="Zbj-YE-Wmq" firstAttribute="top" secondItem="0oK-C9-y1S" secondAttribute="bottom" constant="9" id="5ox-8F-KvX"/>
-                    <constraint firstItem="Pz2-e9-36N" firstAttribute="top" secondItem="qQB-aH-N9G" secondAttribute="bottom" constant="6" id="64v-T6-c30"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="R79-Jb-UVS" secondAttribute="trailing" constant="7" id="4rn-Ie-lJz"/>
+                    <constraint firstItem="Zbj-YE-Wmq" firstAttribute="top" secondItem="0oK-C9-y1S" secondAttribute="bottom" constant="9" id="5Kg-qj-q9b"/>
                     <constraint firstItem="MGh-7i-lnI" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="6AT-bh-pna"/>
+                    <constraint firstItem="R79-Jb-UVS" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="184" id="6Hi-gH-Ujb"/>
+                    <constraint firstItem="NAr-YL-E8p" firstAttribute="top" secondItem="XLs-8c-rWi" secondAttribute="bottom" constant="8" id="6hv-en-rKS"/>
                     <constraint firstItem="qQB-aH-N9G" firstAttribute="leading" secondItem="MGh-7i-lnI" secondAttribute="trailing" constant="8" id="81H-Vg-jhA"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="TvU-YA-O4r" secondAttribute="trailing" constant="7" id="Ajc-bK-Vxc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="XLs-8c-rWi" secondAttribute="trailing" constant="7" id="Bjr-mO-ntZ"/>
                     <constraint firstItem="xis-NW-Nbu" firstAttribute="top" secondItem="ge5-Po-qKh" secondAttribute="topMargin" constant="3" id="CFF-DM-Kbo"/>
-                    <constraint firstItem="XLs-8c-rWi" firstAttribute="top" secondItem="Pz2-e9-36N" secondAttribute="bottom" constant="8" id="CaH-kU-DFA"/>
-                    <constraint firstItem="XLs-8c-rWi" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="ELe-M4-S0U"/>
-                    <constraint firstItem="NAr-YL-E8p" firstAttribute="top" secondItem="XLs-8c-rWi" secondAttribute="bottom" constant="8" id="Fmo-zs-1gc"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="XLs-8c-rWi" secondAttribute="trailing" constant="7" id="JH9-dl-H6Y"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="v2s-lp-qVE" secondAttribute="bottom" constant="4" id="CPI-eY-SiQ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2ue-e7-ssA" secondAttribute="trailing" constant="7" id="JRE-cl-tLM"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="v2s-lp-qVE" secondAttribute="bottom" constant="6" id="K0d-4M-pGO"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="NAr-YL-E8p" secondAttribute="trailing" constant="7" id="KIq-JD-B26"/>
-                    <constraint firstItem="TvU-YA-O4r" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="N7u-2P-BcB"/>
-                    <constraint firstItem="0oK-C9-y1S" firstAttribute="top" secondItem="NAr-YL-E8p" secondAttribute="bottom" constant="8" id="Txx-tb-rZG"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="0oK-C9-y1S" secondAttribute="trailing" constant="7" id="Zyh-l5-pTx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="v2s-lp-qVE" secondAttribute="trailing" constant="150" id="Jwu-60-8q6"/>
+                    <constraint firstItem="0oK-C9-y1S" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="O8m-3U-KEG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Pz2-e9-36N" secondAttribute="trailing" constant="7" id="OMH-gm-gd6"/>
+                    <constraint firstItem="XLs-8c-rWi" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="PNj-fp-9Il"/>
+                    <constraint firstItem="NAr-YL-E8p" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="QpO-50-88F"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="R79-Jb-UVS" secondAttribute="bottom" constant="-2" id="Rdy-gH-ed8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="NAr-YL-E8p" secondAttribute="trailing" constant="7" id="VkF-YS-Tiy"/>
+                    <constraint firstItem="Zbj-YE-Wmq" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="W1q-No-KmM"/>
+                    <constraint firstItem="Pz2-e9-36N" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="W3q-Sm-Ev6"/>
                     <constraint firstItem="xis-NW-Nbu" firstAttribute="leading" secondItem="MGh-7i-lnI" secondAttribute="trailing" constant="8" id="aa6-Bo-gRc"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="v2s-lp-qVE" secondAttribute="trailing" constant="150" id="adk-9d-rO5"/>
-                    <constraint firstItem="0oK-C9-y1S" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="cWj-Wf-tCs"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Zbj-YE-Wmq" secondAttribute="trailing" constant="7" id="huL-Mz-U6S"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="R79-Jb-UVS" secondAttribute="bottom" id="iJf-HI-GRG"/>
-                    <constraint firstItem="v2s-lp-qVE" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="jYv-fk-MvF"/>
+                    <constraint firstItem="v2s-lp-qVE" firstAttribute="top" secondItem="TvU-YA-O4r" secondAttribute="bottom" constant="8" id="cuz-Uk-66T"/>
+                    <constraint firstItem="XLs-8c-rWi" firstAttribute="top" secondItem="Pz2-e9-36N" secondAttribute="bottom" constant="8" id="dlF-xq-uKh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Zbj-YE-Wmq" secondAttribute="trailing" constant="7" id="gTE-Lc-PcL"/>
+                    <constraint firstItem="TvU-YA-O4r" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="jo1-eA-kqc"/>
                     <constraint firstItem="qQB-aH-N9G" firstAttribute="width" secondItem="xis-NW-Nbu" secondAttribute="width" id="kPY-mN-rf9"/>
-                    <constraint firstItem="Zbj-YE-Wmq" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="kYd-xx-Y8Y"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Pz2-e9-36N" secondAttribute="trailing" constant="7" id="lGw-ye-GGT"/>
-                    <constraint firstItem="v2s-lp-qVE" firstAttribute="top" secondItem="TvU-YA-O4r" secondAttribute="bottom" constant="8" id="llM-yX-TVV"/>
+                    <constraint firstItem="Pz2-e9-36N" firstAttribute="top" secondItem="qQB-aH-N9G" secondAttribute="bottom" constant="6" id="mOz-C2-fcU"/>
                     <constraint firstItem="2ue-e7-ssA" firstAttribute="top" secondItem="ge5-Po-qKh" secondAttribute="topMargin" constant="3" id="nzW-B9-3gj"/>
+                    <constraint firstItem="0oK-C9-y1S" firstAttribute="top" secondItem="NAr-YL-E8p" secondAttribute="bottom" constant="8" id="pF9-sI-MD3"/>
+                    <constraint firstItem="v2s-lp-qVE" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="ph7-6M-guO"/>
+                    <constraint firstItem="TvU-YA-O4r" firstAttribute="top" secondItem="Zbj-YE-Wmq" secondAttribute="bottom" constant="8" id="qwM-4W-pvp"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="TvU-YA-O4r" secondAttribute="trailing" constant="7" id="rNO-gF-cMH"/>
                     <constraint firstItem="MGh-7i-lnI" firstAttribute="top" secondItem="ge5-Po-qKh" secondAttribute="topMargin" constant="3" id="rhW-CT-otb"/>
-                    <constraint firstItem="TvU-YA-O4r" firstAttribute="top" secondItem="Zbj-YE-Wmq" secondAttribute="bottom" constant="8" id="vu1-oQ-3ro"/>
-                    <constraint firstItem="Pz2-e9-36N" firstAttribute="leading" secondItem="ge5-Po-qKh" secondAttribute="leadingMargin" constant="7" id="zNe-B7-Bbq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -171,7 +186,7 @@
                 <outlet property="userHeadPortraitImageView" destination="MGh-7i-lnI" id="yr3-vY-CSk"/>
                 <outlet property="viewImageButton" destination="R79-Jb-UVS" id="0gF-vb-94k"/>
             </connections>
-            <point key="canvasLocation" x="232" y="238"/>
+            <point key="canvasLocation" x="232" y="237.5"/>
         </tableViewCell>
     </objects>
 </document>

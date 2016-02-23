@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface UIViewController (ShowPromptAlert)
-- (void)timerFireMethod:(NSTimer*)theTimer;
-- (void)showAlert:(NSString *) _message;
+- (void)showPromptAlert:(NSString *) _message;
+
+- (void)showPromptAlert:(NSString *)message
+ withTimeInterval:(CGFloat)timeInterval;
+
+- (void)showPromptAlertTitle:(NSString *)title
+               message:(NSString *)message
+          timeInterval:(CGFloat)timeInterval;
+
+- (void)showAlertTitle:(NSString *)title
+               message:(NSString *)message
+     andConfirmMessage:(NSString *)confirm;
 @end

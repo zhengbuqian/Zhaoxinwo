@@ -46,7 +46,7 @@
         [self.imageViewArray addObject:imageView];
     }
     [self.view addSubview:[self.imageViewArray objectAtIndex:self.imageIndex]];
-    self.title = [NSString stringWithFormat:@"%d/%d", self.imageIndex + 1, [self.imageViewArray count]];
+    self.title = [NSString stringWithFormat:@"%u/%lu", self.imageIndex + 1, (unsigned long)[self.imageViewArray count]];
 }
 - (void)attachSwipeHandler {
     self.view.userInteractionEnabled = YES;
@@ -61,7 +61,7 @@
 }
 - (void)swipeToLastImage {
     if (self.imageIndex == 0) {
-        [self showAlert:@"这已经是第一张啦"];
+        [self showPromptAlert:@"这已经是第一张啦"];
         return;
     }
     CATransition *transition = [CATransition animation];
@@ -70,11 +70,11 @@
     [[self.imageViewArray objectAtIndex:self.imageIndex] removeFromSuperview];
     self.imageIndex -= 1;
     [self.view addSubview:self.imageViewArray[self.imageIndex]];
-    self.title = [NSString stringWithFormat:@"%d/%d", self.imageIndex + 1, [self.imageViewArray count]];
+    self.title = [NSString stringWithFormat:@"%u/%lu", self.imageIndex + 1, (unsigned long)[self.imageViewArray count]];
 }
 - (void)swipeToNextImage {
     if (self.imageIndex == [self.imageAdressArray count] - 1) {
-        [self showAlert:@"这已经是最后一张啦"];
+        [self showPromptAlert:@"这已经是最后一张啦"];
         return;
     }
     CATransition *transition = [CATransition animation];
@@ -84,7 +84,7 @@
     [[self.imageViewArray objectAtIndex:self.imageIndex] removeFromSuperview];
     self.imageIndex += 1;
     [self.view addSubview:self.imageViewArray[self.imageIndex]];
-    self.title = [NSString stringWithFormat:@"%d/%d", self.imageIndex + 1, [self.imageViewArray count]];
+    self.title = [NSString stringWithFormat:@"%d/%lu", self.imageIndex + 1, (unsigned long)[self.imageViewArray count]];
 }
 
 
