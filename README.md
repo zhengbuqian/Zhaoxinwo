@@ -24,7 +24,7 @@
 
 # iOS
 
-App Store审核中
+[App Store](https://itunes.apple.com/cn/app/zhao-xin-wo/id1086589862?l=en&mt=8)
 
 ![](iOS_Version1_0.gif)
 

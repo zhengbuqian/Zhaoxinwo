@@ -70,9 +70,12 @@ static NSString *FooterViewIdentifier = @"FooterViewIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setSeperatorLine];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-        [self showAlertTitle:@"点击信息标题可以跳转至该条租房信息的豆瓣贴子里"
+        [[[[UIApplication sharedApplication] delegate] window].rootViewController showAlertTitle:@"点击信息标题可以跳转至该条租房信息的豆瓣贴子里"
                      message:@"点击电话号码（如果有）可以进行拨号。长按电话号码可以复制。"
            andConfirmMessage:@"好，知道了"];
     }

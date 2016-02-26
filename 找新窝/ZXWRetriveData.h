@@ -17,6 +17,4 @@
 
 
 - (void)startWithBlock:(void (^)())block;
-//- (void)endInput      :(void (^)())completion;
-//- (instancetype)initWithSearchKeyWord:(NSString *)searchKeyWord andPageNumber:(int)pageNumber;
 @end
